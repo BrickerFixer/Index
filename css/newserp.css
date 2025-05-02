@@ -4793,6 +4793,7 @@ body .check-button_disabled_yes {
 
 .arrow-search {
   margin-right: 22px;
+  width: 720px;
   background: #92BAC2;
   background-image: -webkit-linear-gradient( top right, #B8EAF5 0, #92BAC2 100%);
   background-image: -moz-linear-gradient(top right, #B8EAF5 0, #92BAC2 100%);
