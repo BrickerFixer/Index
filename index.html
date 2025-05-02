@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index4U :3</title>
+  <link rel="stylesheet" href="css/layouts.css">
+  <link rel="stylesheet" href="exp-replacement.css">
+  <link rel="stylesheet" href="css/uikit/kit.css">
+  <link rel="stylesheet" href="css/uikit/suggest2.css">
+  <link rel="stylesheet" href="css/bento.css">
+  <link rel="stylesheet" href="css/uikit/bento/suggestions.css">
+  <link rel="stylesheet" href="css/uikit/bento/geo.css">
+  <link rel="stylesheet" href="css/uikit/bento/weather.css">
+  <link rel="stylesheet" href="css/uikit/bento/news.css">
+  <link rel="stylesheet" href="css/uikit/bento/tv.css">
+</head>
+<body class="b-page b-page-layout__rows b-page_theme_head_light b-page_theme_content_light b-page_noskin css3-transition-off">
+  <div class="background-container">
+    <div class="bg-image"></div>
+    <video class="bg-video" loop muted playsinline></video>
+  </div>
+  <div class="layout header header_table_close">
+    <div class="b-line b-line_header">
+      <div class="header__main">
+        <!-- Left side (logo) -->
+        <div class="layout__col">
+          <div class="personal">
+            <div class="personal__item">
+              <img
+                src="resources/service-icons/mini-islands.png"
+                class="personal__item-icon personal__item-icon_height_56"
+              />
+            </div>
+          </div>
+        </div>
+  
+        <!-- Right side (nav + controls) -->
+        <div class="layout__col layout__col_size_5 header__nav">
+          
+          <a id="edit-toggle" class="header__action header__action_type_wrch">
+            <i class="header__action-i"></i>
+          </a>
+          <a class="header__action header__action_type_srv header__action_behaviour_shy ">
+            <i class="header__action-i"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="customization-panel" style="display: none;">
+      <div class="b-line">
+        <div class="options-container">
+          <div class="option-group">
+            <h3>Background</h3>
+            <button class="bg-btn" data-bg="none">None</button>
+            <button class="bg-btn" data-bg="image">Image</button>
+            <button class="bg-btn" data-bg="video">Video</button>
+            <div class="bg-options" style="display: none;">
+              <input type="url" id="bg-url" placeholder="Enter URL for image/video" />
+              <button id="apply-bg">Apply</button>
+            </div>
+            Preset backgrounds pager here
+          </div>
+          <div class="option-group">
+            <h3>More</h3>
+            Settings/some services pager here
+          </div>
+        </div>
+      </div>
+      <div class="b-line">
+        <div class="options-container">
+          <div class="option-group">
+            <h3>Themes</h3>
+            <div class="controls header__action-extended">
+              Themes pager here
+            </div>
+          </div>
+          <div class="option-group">
+            <h3>Plugins</h3>
+            <div class="controls header__action-extended">
+              Plugins (search backends, islands, widgets) pager here
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+            <!-- Toolbox (hidden in view mode) -->
+            <div id="toolbox" class="toolbox">
+              <div class="blocks-section">
+                <!-- Modular widgets will be injected here by JS -->
+              </div>
+            </div>
+  </div>
+  </div>
+
+
+  <div class="b-line">
+    <div class="container">
+      <!-- Grid Layout -->
+      <div id="grid" class="grid view-mode">
+        <!-- Grid cells will be created by JavaScript -->
+      </div>
+    </div>
+  </div>
+  
+  <script src="client/js/ui.js"></script>
+  <script src="layout.js"></script>
+</body>
+</html>

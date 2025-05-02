@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index - Search</title>
+  <link rel="stylesheet" href="/css/layouts.css"> 
+  <link rel="stylesheet" href="/css/uikit/kit.css">
+  <link rel="stylesheet" href="/css/uikit/suggest2.css">
+  <link rel="stylesheet" href="/css/bento.css">
+  <link rel="stylesheet" href="/css/newserp.css">
+  <link rel="stylesheet" href="/css/islands/islands_general.css">
+</head>
+<body class="b-page b-page-layout__rows b-page_theme_head_light b-page_theme_content_light">
+  <div class="b-page-layout">
+    <div class="main main_type_2-auto layout layout_type_serp serp i-bem">
+        <div class="main__left main__left_size_2 layout__col layout__col_size_2">
+            <div class="navigation serp i-bem">
+                <div class="navigation__item navigation__item_service_yes navigation__item_name_www navigation__item_state_selected">
+                    <div class="service service service_name_www">
+                        <div class="service__icon service__icon_self_40 service-icon__www service-icon__www_self_40"></div>
+                        <div class="service__name">DuckDuckGo</div>
+                    </div>
+                </div>
+                <div class="navigation__item navigation__item_service_yes navigation__item_name_www">
+                    <div class="service service_hoverable_yes service service_name_www">
+                        <a class="service__url b-link" href="">
+                            <div class="service__icon service__icon_self_40 service-icon__www service-icon__www_self_40"></div>
+                            <div class="service__name">QWant</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="navigation__item navigation__item_service_yes navigation__item_name_www">
+                    <div class="service service_hoverable_yes service service_name_www">
+                        <a class="service__url b-link" href="">
+                            <div class="service__icon service__icon_self_40 service-icon__www service-icon__www_self_40"></div>
+                            <div class="service__name">Google</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="navigation__item navigation__item_service_yes navigation__item_name_www">
+                    <div class="service service_hoverable_yes service service_name_www">
+                        <a class="service__url b-link" href="">
+                            <div class="service__icon service__icon_self_40 service-icon__www service-icon__www_self_40"></div>
+                            <div class="service__name">Yandex</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main__right layout__col">
+            <div class="main__right-inner">
+                <div class="main__content">
+                    <div class="content layout layout_type_serp favicons i-bem">
+                        <div class="content__left content__left_size_9 layout__col layout__col_size_9">
+                            <div class="serp-list" id="results">
+                              <h1>Island/Search Result Design and Render test</h1>
+                              <p>The test is designed to show an expected view of how the islands, search results and SERP page <br> should work and on what parameters they should behave. <br> This might change in the future.</p>
+                              <br>
+                                <!-- Main search with some interactive blocks (main search queries, islands like: color picker, weather, cinema info, will the hot water get turned off in some city) -->
+                                <div class="serp-block">
+                                    <div class="serp-item serp-item_plain_yes i-bem ${index === 0 ? 'serp-item_first_yes' : ''} ${item.source ? 'serp-item_source_' + item.source : ''}">
+                                      <div class="serp-item__wrap island i-clearfix">
+                                        <h2 class="serp-item__title">
+                                          <a class="serp-item__title-link b-link" href="${item.url}" target="_blank">
+                                            Result title with <b>Keyword</b> highlight.
+                                          </a>
+                                        </h2>
+                                        <div class="serp-item__greenurl serp-url">
+                                          <a class="serp-url__link" href="${item.url}" target="_blank">example.com</a>
+                                          <span class="serp-url__source">Google</span>
+                                        </div>
+                                        <div class="serp-item__text">Description with <b>keyword</b> highlight</div>
+                                          <div class="serp-sitelinks">
+                                              <a class="serp-sitelinks__link b-link" href="${link.url}" target="_blank">Snippet link 1</a>
+                                              <a class="serp-sitelinks__link b-link" href="${link.url}" target="_blank">Snippet link 2</a>
+                                          </div>
+                                      </div>
+                                    </div>
+                                    <div class="serp-item serp-item_plain_yes i-bem ${index === 0 ? 'serp-item_first_yes' : ''} ${item.source ? 'serp-item_source_' + item.source : ''}">
+                                      <div class="serp-item__wrap island i-clearfix">
+                                        <h2 class="serp-item__title">
+                                          <a class="serp-item__title-link b-link" href="${item.url}" target="_blank">
+                                            Result title with <b>Keyword</b> highlight from that same domain.
+                                          </a>
+                                        </h2>
+                                        <div class="serp-item__greenurl serp-url">
+                                          <a class="serp-url__link" href="${item.url}" target="_blank">example.com</a>
+                                          <span class="serp-url__source">QWant</span>
+                                        </div>
+                                        <div class="serp-item__text">Description with <b>keyword</b> highlight</div>
+                                          <div class="serp-sitelinks">
+                                              <a class="serp-sitelinks__link b-link" href="${link.url}" target="_blank">Snippet link 1</a>
+                                              <a class="serp-sitelinks__link b-link" href="${link.url}" target="_blank">Snippet link 2</a>
+                                          </div>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="serp-block">
+                                  <div class="serp-item serp-item_plain_yes i-bem ${index === 0 ? 'serp-item_first_yes' : ''} ${item.source ? 'serp-item_source_' + item.source : ''}">
+                                    <div class="serp-item__wrap island i-clearfix">
+                                      <h2 class="serp-item__title">
+                                        <a class="serp-item__title-link b-link" href="${item.url}" target="_blank">
+                                          Result title with <b>Keyword</b> highlight this time from a different domain.
+                                        </a>
+                                      </h2>
+                                      <div class="serp-item__greenurl serp-url">
+                                        <a class="serp-url__link" href="${item.url}" target="_blank">example.net</a>
+                                        <span class="serp-url__source">DuckDuckGo</span>
+                                      </div>
+                                      <div class="serp-item__text">Description with <b>keyword</b> highlight</div>
+                                        <div class="serp-sitelinks">
+                                            <a class="serp-sitelinks__link b-link" href="${link.url}" target="_blank">Snippet link 1</a>
+                                            <a class="serp-sitelinks__link b-link" href="${link.url}" target="_blank">Snippet link 2</a>
+                                        </div>
+                                    </div>
+                                  </div>
+                                  <div class="serp-item serp-item_plain_yes i-bem ${index === 0 ? 'serp-item_first_yes' : ''} ${item.source ? 'serp-item_source_' + item.source : ''}">
+                                    <div class="serp-item__wrap island i-clearfix">
+                                      <h2 class="serp-item__title">
+                                        <a class="serp-item__title-link b-link" href="${item.url}" target="_blank">
+                                          Result title with <b>Keyword</b>, but you get the point. That diff domain.
+                                        </a>
+                                      </h2>
+                                      <div class="serp-item__greenurl serp-url">
+                                        <a class="serp-url__link" href="${item.url}" target="_blank">example.net</a>
+                                        <span class="serp-url__source">Yandex</span>
+                                      </div>
+                                      <div class="serp-item__text">Description with <b>keyword</b> highlight</div>
+                                        <div class="serp-sitelinks">
+                                            <a class="serp-sitelinks__link b-link" href="${link.url}" target="_blank">Snippet link 1</a>
+                                            <a class="serp-sitelinks__link b-link" href="${link.url}" target="_blank">Snippet link 2</a>
+                                        </div>
+                                    </div>
+                                  </div>
+                              </div>
+                                <div class="serp-block">
+                                  <div class="serp-block__head">
+                                    <div class="serp-block__head-wrap">Colorpicker</div>
+                                  </div>
+                                  <div class="serp-item">
+                                    <div class="serp-item__wrap island i-clearfix">
+                                        <br>
+                                        <h1>Color picker (Preview UI)</h1>
+                                        <br>
+                                        <input type="color" id="head" name="head" value="#e66465" />
+                                        <hr style="margin-top: 16px; color: #ffffff; margin-bottom: 8px;">
+                                        <p>trigger = search_query; keyword = "color picker"; manually_curated = True; source = "color picker Island by Index Team"</p>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="serp-block">
+                                  <div class="serp-block__head">
+                                    <div class="serp-block__head-wrap">Weather</div>
+                                  </div>
+                                  <div class="serp-item">
+                                    <div class="serp-item__wrap island i-clearfix">
+                                      <div>
+                                        <br>
+                                        <h1>Weather in Moscow (Preview UI)</h1>
+                                        <br>
+                                        <table style="width:100%; border-collapse: collapse; font-family: sans-serif;">
+                                          <thead>
+                                            <tr style="background-color: #f2f2f2;">
+                                              <th style="padding: 8px; border: 1px solid #ddd;">Day</th>
+                                              <th style="padding: 8px; border: 1px solid #ddd;">Weather</th>
+                                              <th style="padding: 8px; border: 1px solid #ddd;">High</th>
+                                              <th style="padding: 8px; border: 1px solid #ddd;">Low</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">Monday</td>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">☀️ Sunny</td>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">25°C</td>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">15°C</td>
+                                            </tr>
+                                            <tr>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">Tuesday</td>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">🌦️ Showers</td>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">22°C</td>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">14°C</td>
+                                            </tr>
+                                            <tr>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">Wednesday</td>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">⛅ Partly Cloudy</td>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">24°C</td>
+                                              <td style="padding: 8px; border: 1px solid #ddd;">16°C</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                        <hr style="margin-top: 16px; color: #ffffff; margin-bottom: 8px;">
+                                        <p>trigger = search_query; keyword = "weather in Moscow"; manually_curated = False; source = "Yandex Weather by BloonFox"; context_wildcard = "Moscow"</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="serp-block">
+                                  <div class="serp-block__head">
+                                    <div class="serp-block__head-wrap">Affiche</div>
+                                  </div>
+                                  <div class="serp-item">
+                                    <div class="serp-item__wrap island i-clearfix">
+                                      <div>
+                                        <br>
+                                        <h1>Now airing in your area (Preview UI)</h1>
+                                        <br>
+                                        <div style="display: flex; flex-wrap: wrap; gap: 16px; font-family: sans-serif;">
+                                          <div style="width: 180px; border: 1px solid #ddd; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                            <img src="poster1.jpg" alt="Movie 1 Poster" style="width: 100%; height: 270px; object-fit: cover;">
+                                            <div style="padding: 8px;">
+                                              <h3 style="margin: 0; font-size: 16px;">The Intern</h3>
+                                              <p style="margin: 4px 0 0 0; font-size: 14px; color: #555;">Drama | 2h 10m</p>
+                                            </div>
+                                          </div>
+                                        
+                                          <div style="width: 180px; border: 1px solid #ddd; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                                            <img src="poster2.jpg" alt="Movie 2 Poster" style="width: 100%; height: 270px; object-fit: cover;">
+                                            <div style="padding: 8px;">
+                                              <h3 style="margin: 0; font-size: 16px;">Ford v Ferrari</h3>
+                                              <p style="margin: 4px 0 0 0; font-size: 14px; color: #555;">Action | 1h 45m</p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+                                        <hr style="margin-top: 16px; color: #ffffff; margin-bottom: 8px;">
+                                        <p>trigger = search_result; keyword = "Omega Cinema tickets"; manually_curated = False; source = "Affiche by Igor Verchenko";</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="serp-block">
+                              <div class="serp-block__head">
+                                <div class="serp-block__head-wrap">My Town</div>
+                              </div>
+                              <div class="serp-item">
+                                <div class="serp-item__wrap island i-clearfix" style="background-color: #fff8ef;">
+                                    <h2 style="margin-top: 8px; color: #cc5500;">🚧 Upcoming Hot Water Outage (Preview UI)</h2>
+                                    <p style="margin-top: 16px; font-size: 16px;">
+                                      <strong>Date:</strong> May 2, 2025<br>
+                                      <strong>Time:</strong> 8:00 AM – 6:00 PM<br>
+                                      <strong>Area Affected:</strong> Downtown and Westside
+                                    </p>
+
+                                    <hr style="margin-top: 16px; color: #ffffff; margin-bottom: 8px;">
+                                    <p>trigger = search_query; keyword = "Hot Water"; manually_curated = False; source = "My Town by Index Services Team"; context_wildcard = "Saratov"</p>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="content__right content__right_size_9 layout__col layout__col_size_9">
+                            <div class="serp-list">
+                                <!-- Right sidebar for context-supporting blocks (ex. misspell suggestion, knowledge, read more) -->
+                                <div class="serp-block">
+                                  <div class="serp-block__head">
+                                    <div class="serp-block__head-wrap">Knowledge</div>
+                                  </div>
+                                  <div class="serp-item serp-item_first_yes">
+                                    <div class="serp-item__wrap island i-clearfix">
+                                      <br>
+                                      <h1>Hydrogen</h1>
+                                      <br>
+                                      <p>
+                                        
+                                        Hydrogen is a chemical element; it has the symbol H and atomic number 1. It is the lightest and most abundant chemical element in the universe, constituting about 75% of all normal matter. Stars, including the Sun, mainly consist of hydrogen in a plasma state, while on Earth, hydrogen is found in water and organic compounds as the gas H₂, and in other molecular forms. The most common isotope of hydrogen consists of one proton, one electron, and no neutrons. Under standard conditions, hydrogen is a gas of diatomic molecules with the formula H₂, called dihydrogen, or sometimes hydrogen gas, molecular hydrogen, or simply hydrogen. Dihydrogen is colorless, odorless, non-toxic, and highly combustible. Hydrogen gas was first produced artificially in the 17th century by the reaction of acids with metals. Henry Cavendish, in 1766–1781, identified hydrogen gas as a distinct substance and discovered its property of producing water when burned; hence its name means 'water-former' in Greek.
+                                        <br>
+                                        Source
+                                            Wikipedia
+                                        <br>
+                                        URL
+                                            https://en.wikipedia.org/wiki/Hydrogen
+                                        
+                                        </p>
+
+                                    <hr style="margin-top: 16px; color: #ffffff; margin-bottom: 8px;">
+                                    <p>trigger = external_api_response_injection; keyword = "Hydrogen"; manually_curated = False; source = "DuckDuckGo Q/A API (autopulled by the DDG search backend)";</p>
+                                    
+                                    </div>
+                                    <div class="serp-item serp-item_first_yes">
+                                      <div class="serp-item__wrap island i-clearfix">
+                                        <br>
+                                        <h1>Read more...</h1>
+                                        <br>
+                                        Insert read more content here
+                                      <hr style="margin-top: 16px; color: #ffffff; margin-bottom: 8px;">
+                                      <p>trigger = external_api_response_injection; keyword = "Hydrogen"; manually_curated = False; source = "DuckDuckGo Q/A API (autopulled by the DDG search backend)";</p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

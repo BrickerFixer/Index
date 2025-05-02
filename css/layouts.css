@@ -1,0 +1,303 @@
+
+.b-line {
+    white-space: nowrap;
+    max-width: 1040px;
+    margin: 0 auto;
+}
+.b-line:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ' ';
+    clear: both;
+    height: 0
+}
+.b-line {
+    min-width: 820px !important
+}
+
+.b-line_promo,
+.b-page_short .b-line_promo {
+    text-align: center
+}
+
+.b-line_promo .b-inline_m {
+    width: auto
+}
+
+.b-footer_spacer {
+    height: 60px
+}
+
+.b-line_search,
+.b-page_short .b-line_search {
+    padding-bottom: 22px;
+    padding-right: 20
+}
+
+.b-line_x {
+    max-width: 100%;
+    width: 100%
+}
+
+.b-line_bar,
+.b-page_short .b-line_bar {
+    max-width: 1500px;
+    min-width: 65em !important;
+    padding: 0 0 1px;
+    margin-bottom: 4px
+}
+
+.b-line_bar__table {
+    width: 100%
+}
+
+.b-line_bar .b-top-bar__item {
+    padding: .35em 0 .25em
+}
+
+.b-line_bar .b-link {
+    color: #0D44A0;
+    outline: none;
+    -moz-outline: none
+}
+
+.b-line_bar .b-link_promo_yes,
+.b-line_bar .b-link_promo_yes:visited {
+    color: #F06600
+}
+
+.b-line_head,
+.b-page_short .b-line_head {
+    padding-bottom: 14px
+}
+
+.b-line_adv,
+.b-page_short .b-line_adv {
+    text-align: left;
+    position: relative;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-left: 92px;
+    font-size: 0;
+    z-index: 2
+}
+
+.b-line_foot,
+.b-page_short .b-line_foot {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    min-height: 2.6em
+}
+
+.b-page_short .b-line_foot {
+    padding: 0;
+    min-width: 75em
+}
+
+.b-page_skins-calatog .b-line_foot {
+    bottom: 145px !important
+}
+
+.b-page_keyboard .b-line_foot {
+    margin-bottom: 210px
+}
+
+.b-line_bar__table {
+    border-collapse: collapse
+}
+
+.b-line_bar__cell {
+    border: 0;
+    padding: 0;
+    vertical-align: middle
+}
+
+.b-line_bar__cell2 {
+    white-space: nowrap;
+    text-align: right
+}
+
+@media screen and (max-width:950px) {
+    .b-line {
+        padding-left: 10px
+    }
+    
+    .b-line_search {
+        min-width: 0 !important
+    }
+    
+    .b-line_search .b-inline_m {
+        width: 79.5%
+    }
+    
+    .b-line_foot,
+    .b-line_promo {
+        padding-left: 0;
+        padding-right: 0
+    }
+}
+
+.edit-mode .b-line_bar {
+    padding-top: 44px
+}
+
+.b-line {
+    min-width: 820px !important
+}
+
+.b-line_search {
+    min-width: 0 !important
+}
+
+.b-line_search .b-inline_m {
+    width: 77%
+}
+
+@media screen and (max-width:1099px) {
+    .b-line_search .b-inline_m {
+        width: 75%
+    }
+}
+
+@media screen and (max-width:950px) {
+    .b-line_search {
+        width: auto
+    }
+}
+
+.b-line_header {
+    max-width: 1592px !important;
+    padding: 0 !important
+}
+
+.b-line_head .widgets-table {
+    width: 100% !important
+}
+
+.b-line_promo {
+    padding-right: 20px !important
+}
+
+.b-line_foot {
+    white-space: normal;
+    min-width: 850px !important;
+    padding: 0 !important
+}
+
+.b-line_footer {
+    max-width: 1552px !important;
+    padding: 0 20px !important
+}
+
+.b-inline {
+    display: -moz-inline-stack;
+    display: inline-block
+}
+
+.b-inline,
+.b-inline_vtop {
+    vertical-align: top
+}
+
+.b-inline_aright {
+    text-align: right
+}
+
+.b-inline_acenter {
+    text-align: center
+}
+
+.b-inline_xxl {
+    width: 100%
+}
+
+.b-inline_xl {
+    width: 80%
+}
+
+.b-inline_l {
+    width: 50%
+}
+
+.b-inline_xm {
+    width: 40%
+}
+
+.b-inline_m {
+    width: 33.2%
+}
+
+.b-inline_s {
+    width: 20%
+}
+
+.b-inline_promo {
+    vertical-align: bottom
+}
+
+.b-inline_widget {
+    min-width: 10em
+}
+
+.b-wrapper {
+    margin: 0 10px 10px 0;
+    padding: 5px 20px;
+    white-space: normal;
+    position: relative;
+    z-index: 1
+}
+
+.b-line_search .b-wrapper,
+.b-line_bar .b-wrapper,
+.b-inline_logo .b-wrapper {
+    margin: 0;
+    padding: 0
+}
+
+
+.b-line_head .b-inline_promo {
+    min-width: 266px
+}
+
+.b-line_head .b-inline_news {
+    width: 66% !important
+}
+
+.b-line_head .b-inline_promo {
+    width: 33% !important
+}
+
+
+.b-line_head .b-tabs__head {
+    margin-bottom: 10px
+}
+
+
+.b-line_head .b-inline_widget .b-disaster {
+    white-space: nowrap
+}
+
+
+.b-page_theme_head_dark .b-line_head .b-ico-hockey,
+.b-page_theme_content_dark .b-ico-hockey {
+    background-image: url("//web.archive.org/web/20140702175240im_/http://yastatic.net/www/_/w94TEq8xrnSawHn0TUdUg3k7xFk.svg")
+}
+
+.no-data-url .b-page_theme_head_dark .b-line_head .b-ico-hockey,
+.no-data-url .b-page_theme_content_dark .b-ico-hockey {
+    background-image: url("//web.archive.org/web/20140702175240im_/http://yastatic.net/www/_/Am-f0bDCjiKleNvSJtfiBMXUd0I.png")
+}
+
+
+.b-line_head .l-widgets-holder {
+    vertical-align: bottom
+}
+
+
+.b-line_head .widgets-table {
+    width: auto
+}

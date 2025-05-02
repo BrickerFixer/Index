@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index - Search</title>
+  <link rel="stylesheet" href="css/layouts.css"> 
+  <link rel="stylesheet" href="css/uikit/kit.css">
+  <link rel="stylesheet" href="css/uikit/suggest2.css">
+  <link rel="stylesheet" href="css/bento.css">
+  <link rel="stylesheet" href="css/newserp.css">
+  <link rel="stylesheet" href="css/islands/islands_general.css">
+</head>
+<body class="b-page b-page-layout__rows b-page_theme_head_light b-page_theme_content_light">
+  <div class="background-container">
+    <div class="bg-image"></div>
+    <video class="bg-video" loop muted playsinline></video>
+  </div>
+  <div class="layout header header_table_close">
+    <div class="b-line b-line_header">
+      <div class="header__main">
+        <!-- Left side (logo) -->
+        <div class="layout__col">
+          <div class="personal">
+            <div class="personal__item">
+              <img src="resources/service-icons/mini-islands.png" class="personal__item-icon personal__item-icon_height_56"/>
+            </div>
+            <div class="personal__gap"></div>
+            <div class="personal__item header__search">
+                <div class="arrow-search">
+                    <form class="search suggest2-form suggest2-counter search_suggest_yes "><input type="hidden" name="lr" value="90"/>
+                      <table class="search__table suggest2-form__node">
+                        <tr class="search__row">
+                          <td class="search__cell search__input"><span class="input suggest2-form__input input_size_m input_theme_normal input_ahead_yes input_keyboard_yes"  onclick="return {'input':{'ajaxKey':'search__input','autoFocus':true}}"><span class="input__box"><input class="input__control input__input searchInput" id="searchInput" tabindex="1" autocomplete="yes" id="text" maxlength="400" name="text" />
+                          </td>
+                          <td class="search__cell search__button"><button class="search-button button suggest2-form__button button_size_m " role="button" tabindex="2" type="submit"><span class="button__text">Go</span></button></td>
+                        </tr>
+                      </table>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Right side (nav + controls) -->
+        <div class="layout__col layout__col_size_5 header__nav">
+          
+          <a
+            class="header__action header__action_type_wrch "
+            onclick="return {'header__action':{'releaseByDocumentScroll':false}}"
+          >
+            <i class="header__action-i"></i>
+          </a>
+          <a
+            class="header__action header__action_type_srv header__action_behaviour_shy "
+            onclick="return {'header__action':{}}"
+          >
+            <i class="header__action-i"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="customization-panel" style="display: none;">
+      <div class="b-line">
+        <div class="options-container">
+          <div class="option-group">
+            <h3>Themes</h3>
+            <button class="theme-btn" data-theme="light">Light</button>
+            <button class="theme-btn" data-theme="dark">Dark</button>
+            <button class="theme-btn" data-theme="colorful">Colorful</button>
+          </div>
+          <div class="option-group">
+            <h3>Background</h3>
+            <button class="bg-btn" data-bg="none">None</button>
+            <button class="bg-btn" data-bg="image">Image</button>
+            <button class="bg-btn" data-bg="video">Video</button>
+            <div class="bg-options" style="display: none;">
+              <input type="url" id="bg-url" placeholder="Enter URL for image/video" />
+              <button id="apply-bg">Apply</button>
+            </div>
+          </div>
+          <div class="option-group">
+            <h3>More</h3>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="b-page-layout">
+    <div class="main main_type_2-auto layout layout_type_serp serp i-bem">
+        <div class="main__left main__left_size_2 layout__col layout__col_size_2">
+            <div class="navigation serp i-bem">
+                <div class="navigation__item navigation__item_service_yes navigation__item_name_google" data-client="google">
+                    <div class="service service service_name_google">
+                        <div class="service__icon service__icon_self_40 service-icon__www service-icon__www_self_40"></div>
+                        <div class="service__name">Google</div>
+                    </div>
+                </div>
+                <div class="navigation__item navigation__item_service_yes navigation__item_name_bing" data-client="bing">
+                    <div class="service service_hoverable_yes service service_name_bing">
+                        <div class="service__icon service__icon_self_40 service-icon__images service-icon__images_self_40"></div>
+                        <div class="service__name">Bing</div>
+                    </div>
+                </div>
+                <div class="navigation__item navigation__item_service_yes navigation__item_name_ddg" data-client="ddg">
+                    <div class="service service_hoverable_yes service service_name_ddg">
+                        <div class="service__icon service__icon_self_40 service-icon__video service-icon__video_self_40"></div>
+                        <div class="service__name">DuckDuckGo</div>
+                    </div>
+                </div>
+                <div class="navigation__item navigation__item_service_yes navigation__item_name_moat" data-client="moat">
+                    <div class="service service_hoverable_yes service service_name_moat">
+                        <div class="service__icon service__icon_self_40 service-icon__maps service-icon__maps_self_40"></div>
+                        <div class="service__name">Moat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main__right layout__col">
+            <div class="main__right-inner">
+                <div class="main__content">
+                    <div class="content layout layout_type_serp favicons i-bem">
+                        <div class="content__left content__left_size_9 layout__col layout__col_size_9">
+                            <div class="serp-list" id="results">
+                                <!-- Main search results will be injected here -->
+                            </div>
+                        </div>
+                        <div class="content__right content__right_size_9 layout__col layout__col_size_9">
+                            <div class="serp-list">
+                                <!-- Right sidebar for knowledge blocks -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <script src="client/js/serp.js"></script>
+    <script src="client/js/serp-render.js"></script>
+</body>
+</html>
