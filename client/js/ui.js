@@ -33,6 +33,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // --- Background Preference Persistence ---
+  function saveBackgroundPreference(type, url) {
+    const bgPref = { type, url };
+    localStorage.setItem('bentoBgPref', JSON.stringify(bgPref));
+  }
+
+  function loadBackgroundPreference() {
+    const type = localStorage.getItem('bentoBgType') || 'none';
+    const url = localStorage.getItem('bentoBgUrl') || '';
+    console.log('[BG] loadBackgroundPreference', { type, url }); // DEBUG
+    applyBackground(type, url);
+  }
+
+  function applyBackground(type, url) {
+    const bgImage = document.querySelector('.bg-image');
+    const bgVideo = document.querySelector('.bg-video');
+    console.log('[BG] applyBackground', { type, url, bgImage, bgVideo }); // DEBUG
+    if (!bgImage || !bgVideo) return;
+    bgImage.style.display = 'none';
+    bgVideo.style.display = 'none';
+    document.body.style.background = '';
+    if (type === 'image' && url) {
+      bgImage.style.backgroundImage = `url('${url}')`;
+      bgImage.style.display = '';
+    } else if (type === 'video' && url) {
+      bgVideo.src = url;
+      bgVideo.style.display = '';
+      bgVideo.play();
+    } else {
+      // None
+      bgImage.style.backgroundImage = '';
+      bgVideo.src = '';
+    }
+  }
+
+  loadBackgroundPreference();
+
   // Background buttons
   const bgButtons = document.querySelectorAll('.bg-btn');
   bgButtons.forEach(btn => {
@@ -44,22 +81,21 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector('.bg-options').style.display = 'block';
         } else {
             document.querySelector('.bg-options').style.display = 'none';
+            saveBackgroundPreference(bgType, '');
+            applyBackground(bgType, '');
         }
     });
   });
 
-  document.getElementById('apply-bg').addEventListener('click', () => {
-    const url = document.getElementById('bg-url').value;
-    const bgType = document.body.getAttribute('data-bg');
-    
-    if (bgType === 'image') {
-        document.querySelector('.bg-image').style.backgroundImage = `url(${url})`;
-    } else if (bgType === 'video') {
-        const video = document.querySelector('.bg-video');
-        video.src = url;
-        video.play();
-    }
-  });
+  const applyBgBtn = document.getElementById('apply-bg');
+  if (applyBgBtn) {
+    applyBgBtn.addEventListener('click', () => {
+      const url = document.getElementById('bg-url').value;
+      const bgType = document.body.getAttribute('data-bg');
+      saveBackgroundPreference(bgType, url);
+      applyBackground(bgType, url);
+    });
+  }
 
   // Close panel when clicking outside
   document.addEventListener('click', function(e) {

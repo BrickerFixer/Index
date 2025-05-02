@@ -4480,8 +4480,10 @@ body .check-button_disabled_yes {
 }
 
 .navigation {
+  background-color: #fff;
   width: 118px;
-  padding: 12px 0 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 0 1px #dddcda;
 }
 
 .navigation__item {
@@ -4494,6 +4496,7 @@ body .check-button_disabled_yes {
   -moz-transition-property: opacity, top, height;
   -moz-transition-duration: 0.1s, 0.15s, 0.1s;
   -moz-transition-timing-function: ease-in, ease-in;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
   transition-property: opacity, top, height;
   transition-duration: 0.1s, 0.15s, 0.1s;
   transition-timing-function: ease-in, ease-in;

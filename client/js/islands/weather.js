@@ -3,6 +3,7 @@ export const name = "Weather";
 export const trigger = "search_query";
 export const keywords = ["weather", "forecast", "temperature", "погода", "прогноз"];
 export const manually_curated = false;
+export const require_context_wildcard = false; // or false
 export const context_wildcard = null; // will be set dynamically
 
 // Weather Island Example

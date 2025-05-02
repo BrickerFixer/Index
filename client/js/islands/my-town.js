@@ -1,4 +1,11 @@
-// My Town Island
+export const id = "my-town";
+export const name = "My Town";
+export const trigger = "search_query";
+export const keywords = ["my town", "outage", "hot water", "downtown", "westside", "мой город", "отключение", "горячая вода"];
+export const manually_curated = true;
+export const require_context_wildcard = true; // or false
+export const context_wildcard = null;
+
 export function renderIsland(container, params) {
   container.innerHTML = `
     <div class="serp-block">

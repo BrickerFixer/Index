@@ -1,4 +1,11 @@
-// Affiche Island
+export const id = "affiche";
+export const name = "Affiche";
+export const trigger = "search_query";
+export const keywords = ["affiche", "cinema", "movie", "кино", "афиша"];
+export const manually_curated = true;
+export const require_context_wildcard = true; // or false
+export const context_wildcard = null;
+
 export function renderIsland(container, params) {
   container.innerHTML = `
     <div class="serp-block">

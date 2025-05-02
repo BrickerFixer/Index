@@ -1,9 +1,9 @@
 export const id = "color-picker";
 export const name = "Color Picker";
 export const trigger = "search_query";
-export const keywords = ["color", "hex", "pantone"];
+export const keywords = ["color", "hex color", "pantone", "color picker"];
+export const require_context_wildcard = false; // or false
 export const manually_curated = true;
-export const context_wildcard = "color";
 
 // Color Picker Island
 export function renderIsland(container, params) {

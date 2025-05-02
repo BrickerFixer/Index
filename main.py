@@ -5,6 +5,11 @@ from fastapi.staticfiles import StaticFiles
 from typing import List, Dict, Any
 import httpx
 import os
+from urllib.parse import urlparse
+from collections import defaultdict
+from clients.dummy import DummyClient
+from clients.ddg import DDGClient
+from clients.google import GoogleClient
 
 app = FastAPI()
 
@@ -42,33 +47,11 @@ class SearchClient:
     async def search(self, query: str) -> List[Dict[str, Any]]:
         raise NotImplementedError
 
-class DummyClient(SearchClient):
-    name = "dummy"
-    display_name = "Dummy"
-
-    async def search(self, query: str):
-        # Return a few example results for demonstration
-        return [
-            {
-                "title": f"Dummy result for '{query}' - Example 1",
-                "url": "https://example.com/1",
-                "snippet": f"This is the first dummy result for '{query}'."
-            },
-            {
-                "title": f"Dummy result for '{query}' - Example 2",
-                "url": "https://example.com/2",
-                "snippet": f"This is the second dummy result for '{query}'."
-            },
-            {
-                "title": f"Dummy result for '{query}' - Example 3",
-                "url": "https://example.com/3",
-                "snippet": f"This is the third dummy result for '{query}'."
-            }
-        ]
-
 clients = {
     DummyClient.name: DummyClient(),
-    # Add more clients here (GoogleClient, BingClient, etc.)
+    DDGClient.name: DDGClient(),
+    GoogleClient.name: GoogleClient(),
+    # ...add more as you split them out
 }
 
 # --- API endpoints ---
@@ -85,36 +68,15 @@ async def search(
     if client not in clients:
         return {"error": "Unknown client"}
     results = await clients[client].search(q)
-    # Always return specialBlocks and webResults for frontend compatibility
+    # Group results by domain
+    web_results = defaultdict(list)
+    for r in results:
+        domain = urlparse(r["url"]).netloc or "example.com"
+        web_results[domain].append(r)
     return {
         "specialBlocks": [],
-        "webResults": {"example.com": results}
+        "webResults": web_results
     }
-
-# --- Example: Add a real client (DuckDuckGo) ---
-
-class DDGClient(SearchClient):
-    name = "ddg"
-    display_name = "DuckDuckGo"
-
-    async def search(self, query: str):
-        async with httpx.AsyncClient() as client:
-            resp = await client.get(
-                "https://api.duckduckgo.com/",
-                params={"q": query, "format": "json", "no_redirect": 1, "no_html": 1},
-            )
-            data = resp.json()
-            results = []
-            for topic in data.get("RelatedTopics", []):
-                if "Text" in topic and "FirstURL" in topic:
-                    results.append({
-                        "title": topic["Text"],
-                        "url": topic["FirstURL"],
-                        "snippet": topic["Text"],
-                    })
-            return results
-
-clients[DDGClient.name] = DDGClient()
 
 # --- Run with: uvicorn main:app --reload ---
 

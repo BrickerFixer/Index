@@ -138,19 +138,19 @@ async function renderIslands(trigger, query) {
   const results = [];
   for (const island of IslandRegistry.islands) {
     if (island.trigger !== trigger) continue;
-    // Try to extract context wildcard for this island
     const context_wildcard = extractContextWildcard(query, island);
-    // Only render if a keyword is matched
-    if (context_wildcard !== null) {
-      const container = document.createElement('div');
-      container.className = 'island-container';
-      await island.renderIsland(container, {
-        trigger,
-        keyword: island.keywords.find(kw => query.toLowerCase().includes(kw.toLowerCase())),
-        context_wildcard
-      });
-      results.push(container.outerHTML);
-    }
+    const keywordMatched = island.keywords.some(kw => query.toLowerCase().includes(kw.toLowerCase()));
+    if (!keywordMatched) continue;
+    // Only render if context_wildcard is present, or if not required
+    if (island.require_context_wildcard && !context_wildcard) continue;
+    const container = document.createElement('div');
+    container.className = 'island-container';
+    await island.renderIsland(container, {
+      trigger,
+      keyword: island.keywords.find(kw => query.toLowerCase().includes(kw.toLowerCase())),
+      context_wildcard
+    });
+    results.push(container.outerHTML);
   }
   return results.join('');
 }
