@@ -4500,6 +4500,7 @@ body .check-button_disabled_yes {
   transition-property: opacity, top, height;
   transition-duration: 0.1s, 0.15s, 0.1s;
   transition-timing-function: ease-in, ease-in;
+  align-content: center;
 }
 
 .navigation__item .service {
@@ -4508,10 +4509,12 @@ body .check-button_disabled_yes {
   height: 72px;
   margin: 0;
   text-align: center;
+  align-content: center;
 }
 
 .navigation__item .service__icon {
   vertical-align: top;
+  filter: grayscale(1);
 }
 
 .navigation__item_state_selected .service {
@@ -4521,11 +4524,11 @@ body .check-button_disabled_yes {
 
 .navigation__item_state_selected .service__icon {
   opacity: 0.8;
+  filter: grayscale(1);
 }
 
 .navigation__item .service_hoverable_yes {
   color: #888;
-  border-radius: 3px;
 }
 
 .navigation__item_stacked_yes {

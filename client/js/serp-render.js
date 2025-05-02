@@ -10,7 +10,7 @@ function renderClientNav(clients, selectedClient, q) {
   nav.innerHTML = clients.map(client => `
     <div class="navigation__item navigation__item_service_yes navigation__item_name_${client.id} ${client.id === selectedClient ? 'navigation__item_selected_yes' : ''}" data-client="${client.id}">
       <div class="service service_hoverable_yes service service_name_${client.id}">
-        <div class="service__icon service__icon_self_40"></div>
+        <img src="${client.icon}" style="height:40px" class="service__icon service__icon_self_40">
         <div class="service__name">${client.name}</div>
       </div>
     </div>

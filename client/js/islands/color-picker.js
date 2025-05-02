@@ -20,30 +20,6 @@ export function renderIsland(container, params) {
             padding: 0;
           }
           
-          .color-picker-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 20px;
-            background: linear-gradient(to bottom, rgba(255,255,255,1), transparent);
-            pointer-events: none;
-            z-index: 2;
-          }
-          
-          .color-picker-wrapper::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 20px;
-            background: linear-gradient(to top, rgba(255,255,255,1), transparent);
-            pointer-events: none;
-            z-index: 2;
-          }
-          
           .color-picker {
             display: flex;
             flex-direction: column;
@@ -58,6 +34,18 @@ export function renderIsland(container, params) {
             margin: 0;
             position: relative;
             height: 40px;
+          }
+
+          .color-item:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30%;
+            background: linear-gradient(to top, rgba(0,0,0,0.2), transparent);
+            pointer-events: none;
+            z-index: 2;
           }
           
           .subtones {
@@ -91,14 +79,6 @@ export function renderIsland(container, params) {
           
           .color-name {
             padding-left: 16px;
-          }
-          
-          .color-container:hover {
-            box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
-          }
-          
-          .color-container.active {
-            box-shadow: 0 0 0 2px rgba(0,0,0,0.3);
           }
           
           .hex-value {

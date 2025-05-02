@@ -4,6 +4,7 @@ import httpx
 class GoogleClient:
     name = "google"
     display_name = "Google"
+    icon = "https://www.google.com/favicon.ico"  # Use the correct icon path
 
     async def search(self, query: str) -> List[Dict[str, Any]]:
         # Example: Use a public Whoogle instance as a proxy for Google search

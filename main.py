@@ -58,7 +58,14 @@ clients = {
 
 @app.get("/api/clients")
 async def get_clients():
-    return [{"id": c.name, "name": c.display_name} for c in clients.values()]
+    return [
+        {
+            "id": c.name,
+            "name": c.display_name,
+            "icon": getattr(c, "icon", "resources/service-icons/mini.png")
+        }
+        for c in clients.values()
+    ]
 
 @app.get("/api/search")
 async def search(
