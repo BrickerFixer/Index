@@ -23,7 +23,7 @@
         <div class="layout__col">
           <div class="personal">
             <div class="personal__item">
-              <img src="resources/service-icons/mini-islands.png" class="personal__item-icon personal__item-icon_height_56"/>
+              <a href="/"><img src="resources/service-icons/mini-islands.png" class="personal__item-icon personal__item-icon_height_56"/></a>
             </div>
             <div class="personal__gap"></div>
             <div class="personal__item header__search">
@@ -65,12 +65,6 @@
       <div class="b-line">
         <div class="options-container">
           <div class="option-group">
-            <h3>Themes</h3>
-            <button class="theme-btn" data-theme="light">Light</button>
-            <button class="theme-btn" data-theme="dark">Dark</button>
-            <button class="theme-btn" data-theme="colorful">Colorful</button>
-          </div>
-          <div class="option-group">
             <h3>Background</h3>
             <button class="bg-btn" data-bg="none">None</button>
             <button class="bg-btn" data-bg="image">Image</button>
@@ -80,9 +74,52 @@
               <button id="apply-bg">Apply</button>
             </div>
           </div>
-          <div class="option-group">
-            <h3>More</h3>
-            
+          <div class="options-container">
+            <div class="option-group">
+              <h3>Custom CSS</h3>
+              <input type="url" id="custom-css-url" placeholder="Paste external CSS URL here">
+              <button id="apply-custom-css">Apply CSS</button>
+              <button id="reset-custom-css">Reset CSS</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="b-line">
+        <div class="option-group">
+          <h3>More</h3>
+          <div class="services-carousel">
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-my.png" alt="Settings" class="service-icon" />
+              <span class="service-label">Settings</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-weather.png" alt="Weather" class="service-icon" />
+              <span class="service-label">Weather</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-mytown.png" alt="My Town" class="service-icon" />
+              <span class="service-label">My Town</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-videos.png" alt="Videos" class="service-icon" />
+              <span class="service-label">Videos</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-mini.png" alt="Minimal Search" class="service-icon" />
+              <span class="service-label">Minimal Search</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-pics.png" alt="Pics" class="service-icon" />
+              <span class="service-label">Pics</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-soft.png" alt="Software" class="service-icon" />
+              <span class="service-label">Software</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-transport.png" alt="Transport" class="service-icon" />
+              <span class="service-label">Transport</span>
+            </a>
           </div>
         </div>
       </div>

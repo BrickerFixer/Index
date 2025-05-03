@@ -700,3 +700,28 @@ body[data-bg="video"] .bg-video {
     line-height: 0;
 }
 
+
+.services-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding: 8px 0;
+    justify-content: center;
+  }
+  .service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    min-width: 80px;
+  }
+  .service-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 6px;
+  }
+  .service-label {
+    font-size: 14px;
+    text-align: center;
+  }
