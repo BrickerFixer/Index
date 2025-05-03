@@ -59,39 +59,66 @@
               <input type="url" id="bg-url" placeholder="Enter URL for image/video" />
               <button id="apply-bg">Apply</button>
             </div>
-            Preset backgrounds pager here
           </div>
-          <div class="option-group">
-            <h3>More</h3>
-            Settings/some services pager here
+          <div class="options-container">
+            <div class="option-group">
+              <h3>Custom CSS</h3>
+              <input type="url" id="custom-css-url" placeholder="Paste external CSS URL here">
+              <button id="apply-custom-css">Apply CSS</button>
+              <button id="reset-custom-css">Reset CSS</button>
+            </div>
           </div>
         </div>
       </div>
       <div class="b-line">
-        <div class="options-container">
-          <div class="option-group">
-            <h3>Themes</h3>
-            <div class="controls header__action-extended">
-              Themes pager here
-            </div>
-          </div>
-          <div class="option-group">
-            <h3>Plugins</h3>
-            <div class="controls header__action-extended">
-              Plugins (search backends, islands, widgets) pager here
-            </div>
+        <div class="option-group">
+          <h3>More</h3>
+          <div class="services-carousel">
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-my.png" alt="Settings" class="service-icon" />
+              <span class="service-label">Settings</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-weather.png" alt="Weather" class="service-icon" />
+              <span class="service-label">Weather</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-mytown.png" alt="My Town" class="service-icon" />
+              <span class="service-label">My Town</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-videos.png" alt="Videos" class="service-icon" />
+              <span class="service-label">Videos</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-mini.png" alt="Minimal Search" class="service-icon" />
+              <span class="service-label">Minimal Search</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-pics.png" alt="Pics" class="service-icon" />
+              <span class="service-label">Pics</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-soft.png" alt="Software" class="service-icon" />
+              <span class="service-label">Software</span>
+            </a>
+            <a href="#" class="service-item">
+              <img src="resources/service-icons/mini-transport.png" alt="Transport" class="service-icon" />
+              <span class="service-label">Transport</span>
+            </a>
+            <!-- Add more service items as needed -->
           </div>
         </div>
       </div>
     </div>
-            <!-- Toolbox (hidden in view mode) -->
-            <div id="toolbox" class="toolbox">
-              <div class="blocks-section">
-                <!-- Modular widgets will be injected here by JS -->
-              </div>
-            </div>
-  </div>
-  </div>
+    <!-- Toolbox (hidden in view mode) -->
+    <div id="toolbox" class="toolbox">
+      <div class="blocks-section">
+        <!-- Modular widgets will be injected here by JS -->
+      </div>
+    </div>
+</div>
+</div>
 
 
   <div class="b-line">
@@ -103,6 +130,32 @@
     </div>
   </div>
   
+  <style>
+    .services-carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 16px;
+      padding: 8px 0;
+      justify-content: center;
+    }
+    .service-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      min-width: 80px;
+    }
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 6px;
+    }
+    .service-label {
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
   <script src="client/js/ui.js"></script>
   <script src="layout.js"></script>
   </body>

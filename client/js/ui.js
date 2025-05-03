@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // --- Background Preference Persistence ---
   function saveBackgroundPreference(type, url) {
-    const bgPref = { type, url };
-    localStorage.setItem('bentoBgPref', JSON.stringify(bgPref));
+    localStorage.setItem('bentoBgType', type);
+    localStorage.setItem('bentoBgUrl', url);
   }
 
   function loadBackgroundPreference() {
@@ -64,7 +64,9 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       // None
       bgImage.style.backgroundImage = '';
+      bgImage.style.display = 'none';
       bgVideo.src = '';
+      bgVideo.style.display = 'none';
     }
   }
 
@@ -108,4 +110,56 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 300);
     }
   });
+
+  // Custom CSS logic
+  const cssInput = document.getElementById('custom-css-url');
+  const cssBtn = document.getElementById('apply-custom-css');
+  // Add reset button logic
+  const cssResetBtn = document.getElementById('reset-custom-css');
+  if (cssInput && cssBtn) {
+    cssInput.value = loadCustomCssUrl();
+    cssBtn.addEventListener('click', () => {
+      const url = cssInput.value.trim();
+      saveCustomCssUrl(url);
+      applyCustomCss(url);
+    });
+  }
+  if (cssResetBtn) {
+    cssResetBtn.addEventListener('click', () => {
+      resetCustomCss();
+      if (cssInput) cssInput.value = '';
+    });
+  }
+  // Apply on load if present
+  const savedCssUrl = loadCustomCssUrl();
+  if (savedCssUrl) applyCustomCss(savedCssUrl);
 });
+
+// Custom CSS functions
+function saveCustomCssUrl(url) {
+  localStorage.setItem('customCssUrl', url);
+}
+
+function loadCustomCssUrl() {
+  return localStorage.getItem('customCssUrl') || '';
+}
+
+function applyCustomCss(url) {
+  if (!url) return;
+  let link = document.getElementById('custom-css-link');
+  if (!link) {
+    link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.id = 'custom-css-link';
+    document.head.appendChild(link);
+  }
+  link.href = url;
+}
+
+function resetCustomCss() {
+  localStorage.removeItem('customCssUrl');
+  const link = document.getElementById('custom-css-link');
+  if (link) link.remove();
+  // Optionally, reload the page to fully reset styles
+  // location.reload();
+}

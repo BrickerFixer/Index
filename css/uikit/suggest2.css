@@ -860,3 +860,7 @@ html.ios7 .suggest2.popup {
 .b-region-stripe .b-link {
     color: #0d44a0 !important
 }
+.widget input, .widget textarea, .widget .input__control {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+}
