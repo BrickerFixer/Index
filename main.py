@@ -10,6 +10,7 @@ from collections import defaultdict
 from clients.dummy import DummyClient
 from clients.ddg import DDGClient
 from clients.google import GoogleClient
+from clients.qwant import QwantClient
 
 app = FastAPI()
 
@@ -51,6 +52,7 @@ clients = {
     DummyClient.name: DummyClient(),
     DDGClient.name: DDGClient(),
     GoogleClient.name: GoogleClient(),
+    QwantClient.name: QwantClient(),
     # ...add more as you split them out
 }
 

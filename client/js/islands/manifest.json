@@ -2,5 +2,8 @@
     "affiche.js",
     "color-picker.js",
     "my-town.js",
-    "weather.js"
+    "weather.js",
+    "expose.js",
+    "example.js",
+    "interstellar-test.js"
 ]

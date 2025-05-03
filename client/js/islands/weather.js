@@ -5,6 +5,7 @@ export const keywords = ["weather", "forecast", "temperature", "погода", "
 export const manually_curated = false;
 export const require_context_wildcard = false; // or false
 export const context_wildcard = null; // will be set dynamically
+export const column = "main"; // or "main"
 
 // Weather Island Example
 export async function renderIsland(container, params) {
@@ -18,24 +19,33 @@ export async function renderIsland(container, params) {
   container.innerHTML = `
     <div class="serp-block">
       <div class="serp-block__head"><div class="serp-block__head-wrap">Weather in ${location}</div></div>
-      <div class="serp-item"><div class="island island-interactive i-clearfix">
-        <div class="weather-demo">
-          <div class="weather-demo__icon">☀️</div>
-          <div class="weather-demo__info">
-            <div class="weather-demo__temp">+18°C</div>
-            <div class="weather-demo__desc">Clear sky</div>
-            <div class="weather-demo__location">${location}</div>
-          </div>
-        </div>
+      <div class="serp-item"><div class="serp-item__wrap island island-interactive i-clearfix weather-island-container">
+          <h1>${location}</h1>
+          <div class="weather-temperature"><h1>23°</h1></div>
+          <h1>Sunny</h1>
       </div></div>
     </div>
     <style>
-      .weather-demo { display: flex; align-items: center; gap: 16px; }
-      .weather-demo__icon { font-size: 48px; }
-      .weather-demo__info { display: flex; flex-direction: column; }
-      .weather-demo__temp { font-size: 32px; font-weight: bold; }
-      .weather-demo__desc { color: #666; }
-      .weather-demo__location { color: #888; font-size: 14px; }
+      .weather-island-container {
+        font-family: "Inter", sans-serif;
+        color: white;
+        background: url("resources/backgrounds/plasma/Castilla_Sky/contents/screenshot.png"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+      }
+      .weather-island-container > h1 {
+        font-weight: 300;
+      }
+      .weather-temperature {
+        align-content: center;
+        height: 96px;
+        font-size: 64px;
+        text-align: end;
+      }
+      .weather-temperature > h1 {
+        font-weight: 300;
+      }
     </style>
   `;
 }

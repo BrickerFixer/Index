@@ -132,27 +132,80 @@ const IslandRegistry = {
   }
 };
 
-// --- Render Islands (Client-side only) ---
-async function renderIslands(trigger, query) {
+// --- Render Islands (Client-side only, with column support) ---
+async function renderIslands(trigger, query, searchResults, specialBlocks) {
   await IslandRegistry.load();
-  const results = [];
+  const mainIslands = [];
+  const supportingIslands = [];
   for (const island of IslandRegistry.islands) {
-    if (island.trigger !== trigger) continue;
-    const context_wildcard = extractContextWildcard(query, island);
-    const keywordMatched = island.keywords.some(kw => query.toLowerCase().includes(kw.toLowerCase()));
-    if (!keywordMatched) continue;
-    // Only render if context_wildcard is present, or if not required
-    if (island.require_context_wildcard && !context_wildcard) continue;
-    const container = document.createElement('div');
-    container.className = 'island-container';
-    await island.renderIsland(container, {
-      trigger,
-      keyword: island.keywords.find(kw => query.toLowerCase().includes(kw.toLowerCase())),
-      context_wildcard
-    });
-    results.push(container.outerHTML);
+    const triggerType = island.trigger_type || "query";
+    let shouldRender = false;
+    let context = null;
+    let keyword = null;
+
+    if (triggerType === "query") {
+      keyword = island.keywords.find(kw => query.toLowerCase().includes(kw.toLowerCase()));
+      shouldRender = !!keyword && (!island.require_context_wildcard || extractContextWildcard(query, island));
+      context = extractContextWildcard(query, island);
+    } else if (triggerType === "domain") {
+      const domains = Object.keys(searchResults || {});
+      keyword = island.keywords.find(kw => domains.some(domain => domain.includes(kw)));
+      shouldRender = !!keyword;
+      context = keyword;
+    } else if (triggerType === "content") {
+      let found = null;
+      for (const [domain, items] of Object.entries(searchResults || {})) {
+        for (const item of items) {
+          for (const kw of island.keywords) {
+            if (
+              (item.title && item.title.toLowerCase().includes(kw.toLowerCase())) ||
+              (item.snippet && item.snippet.toLowerCase().includes(kw.toLowerCase()))
+            ) {
+              found = { kw, item };
+              break;
+            }
+          }
+          if (found) break;
+        }
+        if (found) break;
+      }
+      if (found) {
+        shouldRender = true;
+        keyword = found.kw;
+        context = found.item.title || found.item.snippet;
+      }
+    } else if (triggerType === "self") {
+      if (typeof island.shouldRender === "function") {
+        const result = await island.shouldRender({ query, searchResults, specialBlocks });
+        shouldRender = !!result.shouldRender;
+        keyword = result.keyword;
+        context = result.context;
+      }
+    } else if (triggerType === "external") {
+      if (typeof island.externalTrigger === "function") {
+        const result = await island.externalTrigger({ query, searchResults, specialBlocks });
+        shouldRender = !!result.shouldRender;
+        keyword = result.keyword;
+        context = result.context;
+      }
+    }
+
+    if (shouldRender) {
+      const container = document.createElement('div');
+      container.className = 'island-container';
+      await island.renderIsland(container, {
+        trigger,
+        keyword,
+        context_wildcard: context
+      });
+      if (island.column === 'supporting' || island.column === 'right') {
+        supportingIslands.push(container.outerHTML);
+      } else {
+        mainIslands.push(container.outerHTML);
+      }
+    }
   }
-  return results.join('');
+  return { main: mainIslands.join(''), supporting: supportingIslands.join('') };
 }
 
 // Extract context wildcard from query
@@ -193,10 +246,10 @@ fetch('/api/clients')
           console.log('Search API response:', data);
           const resultsContainer = document.getElementById('results');
           // Fetch and render dynamic islands
-          const islandsHTML = await renderIslands('search_query', q);
+          const { main, supporting } = await renderIslands('search_query', q, data.webResults, data.specialBlocks);
           // Render main content (special blocks + web results)
           const mainContent = [
-            islandsHTML,
+            main,
             ...data.specialBlocks.filter(block => block.type !== 'knowledge').map(block => renderSpecialBlock(block)),
             renderSearchResults(data.webResults)
           ].join('');
@@ -223,7 +276,7 @@ fetch('/api/clients')
                   </div>
                 </div>
               </div>
-            `).join('') : '';
+            `).join('') : supporting;
         });
     }
     // On form submit, redirect to new indsearch page instance with updated query
