@@ -3,9 +3,9 @@ export const id = "quick-fact";
 // Display name of your island
 export const name = "Test";
 // Trigger that makes your island appear (query, domain, content, self, external)
-export const trigger_type = "content";
+export const trigger_type = "query";
 // keyword that triggers island's appearance
-export const keywords = ["test", "dummy", "example.com"];
+export const keywords = ["test island block"];
 // Does island need something to narrow the information shown?
 // For example, if you are making a weather island, context wildcard is the city where you want the weather to be pulled from
 export const require_context_wildcard = false;

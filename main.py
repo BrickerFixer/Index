@@ -11,6 +11,9 @@ from clients.dummy import DummyClient
 from clients.ddg import DDGClient
 from clients.google import GoogleClient
 from clients.qwant import QwantClient
+from clients.wikipedia import WikipediaClient
+from clients.ruwikipedia import RuWikipediaClient
+
 
 app = FastAPI()
 
@@ -53,6 +56,8 @@ clients = {
     DDGClient.name: DDGClient(),
     GoogleClient.name: GoogleClient(),
     QwantClient.name: QwantClient(),
+    WikipediaClient.name: WikipediaClient(),
+    RuWikipediaClient.name: RuWikipediaClient()
     # ...add more as you split them out
 }
 

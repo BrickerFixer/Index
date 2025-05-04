@@ -3,6 +3,5 @@
     "color-picker.js",
     "my-town.js",
     "weather.js",
-    "expose.js",
-    "random-example.js"
+    "expose.js"
 ]

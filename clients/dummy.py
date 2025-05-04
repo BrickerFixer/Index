@@ -8,12 +8,12 @@ class DummyClient:
         return [
             {
                 "title": f"Dummy result for '{query}' - Example 1",
-                "url": "https://example.com/1",
+                "url": "https://example.ru/1",
                 "snippet": f"This is the first dummy result for '{query}'."
             },
             {
                 "title": f"Dummy result for '{query}' - Example 2",
-                "url": "https://example.com/2",
+                "url": "https://example.org/2",
                 "snippet": f"This is the second dummy result for '{query}'."
             },
             {
