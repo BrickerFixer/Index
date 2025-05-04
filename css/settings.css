@@ -1,0 +1,10 @@
+.settings-category {
+    background-image: url(/resources/backgrounds/plasma/Aghi/contents/images/1024x768.jpg);
+    height: 256px;
+    width: 100%;
+    background-size: cover;
+    align-content: center;
+    justify-content: center;
+    color: white;
+    padding-left: 128px;
+}

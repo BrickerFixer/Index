@@ -1,7 +1,7 @@
 // Unique island ID
 export const id = "quick-fact";
 // Display name of your island
-export const name = "TEST";
+export const name = "Test";
 // Trigger that makes your island appear (query, domain, content, self, external)
 export const trigger_type = "content";
 // keyword that triggers island's appearance
@@ -20,10 +20,10 @@ export function renderIsland(container, params) {
     <div class="serp-block">
       <div class="serp-block__head"><div class="serp-block__head-wrap">${name}</div></div>
       <div class="serp-item"><div class="serp-item__wrap island island-interactive i-clearfix">
-        <h1>TEST ISLAND</h1>
-        WHAT TRIGGERS: ${trigger_type}
+        <h1>Test Island</h1>
+        What triggered: ${trigger_type}
         <br>
-        TRIGGER KEYWORD: ${params.keyword}
+        Thing that triggered it: "${params.keyword}"
       </div></div>
     </div>
   `;

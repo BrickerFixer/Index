@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
   servicesBtn.addEventListener('click', function(e) {
     e.preventDefault();
     isPanelOpen = !isPanelOpen;
-    customizationPanel.style.display = 'block';
     
     if (isPanelOpen) {
       customizationPanel.classList.add('expanded');
@@ -16,9 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       customizationPanel.classList.remove('expanded');
       servicesBtn.classList.remove('header__action_pressed_yes');
-      setTimeout(() => {
-        if (!isPanelOpen) customizationPanel.style.display = 'none';
-      }, 300);
     }
   });
 

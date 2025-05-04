@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index4U :3</title>
+  <title>Index</title>
   <link rel="stylesheet" href="css/layouts.css">
-  <link rel="stylesheet" href="exp-replacement.css">
   <link rel="stylesheet" href="css/uikit/kit.css">
   <link rel="stylesheet" href="css/uikit/suggest2.css">
   <link rel="stylesheet" href="css/bento.css">
@@ -36,7 +35,7 @@
         </div>
   
         <!-- Right side (nav + controls) -->
-        <div class="layout__col layout__col_size_5 header__nav">
+        <div class="layout__col">
           
           <a id="edit-toggle" class="header__action header__action_type_wrch">
             <i class="header__action-i"></i>
@@ -47,7 +46,7 @@
         </div>
       </div>
     </div>
-    <div class="customization-panel" style="display: none;">
+    <div class="customization-panel">
       <div class="b-line">
         <div class="options-container">
           <div class="option-group">
@@ -74,7 +73,7 @@
         <div class="option-group">
           <h3>More</h3>
           <div class="services-carousel">
-            <a href="#" class="service-item">
+            <a href="settings.html" class="service-item">
               <img src="resources/service-icons/mini-my.png" alt="Settings" class="service-icon" />
               <span class="service-label">Settings</span>
             </a>
@@ -129,33 +128,7 @@
       </div>
     </div>
   </div>
-  
-  <style>
-    .services-carousel {
-      display: flex;
-      overflow-x: auto;
-      gap: 16px;
-      padding: 8px 0;
-      justify-content: center;
-    }
-    .service-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-decoration: none;
-      color: inherit;
-      min-width: 80px;
-    }
-    .service-icon {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 6px;
-    }
-    .service-label {
-      font-size: 14px;
-      text-align: center;
-    }
-  </style>
+
   <script src="client/js/ui.js"></script>
   <script src="layout.js"></script>
   </body>

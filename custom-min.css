@@ -26,3 +26,13 @@
     background: var(--main-color) !important;
     backdrop-filter: blur(10px);
 }
+
+.header__action{
+    border-radius: 50%;
+}
+
+.header__action::before {
+    background: none;
+    background-color: #FFFFFF00;
+    border-radius: 50%;
+}
