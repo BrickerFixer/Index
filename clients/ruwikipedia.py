@@ -14,7 +14,7 @@ class RuWikipediaClient:
             "srsearch": query,
             "format": "json",
             "utf8": 1,
-            "srlimit": 10
+            "srlimit": 100
         }
         async with httpx.AsyncClient() as client:
             resp = await client.get(url, params=params)
