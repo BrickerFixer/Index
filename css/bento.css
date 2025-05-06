@@ -601,28 +601,6 @@ body .b-head-tabs__link {
     font-size: 16px;
 }
 
-.theme-btn, .bg-btn, .more-btn {
-    display: inline-block;
-    padding: 8px 16px;
-    margin: 0 8px 8px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background: #fff;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.theme-btn:hover, .bg-btn:hover, .more-btn:hover {
-    background: #f5f5f5;
-    border-color: #ccc;
-}
-
-.theme-btn.active, .bg-btn.active {
-    background: #92BAC2;
-    border-color: #92BAC2;
-    color: white;
-}
-
 .plugin-list {
     display: flex;
     flex-direction: column;
