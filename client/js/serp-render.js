@@ -245,11 +245,8 @@ fetch('/api/clients')
         .then(async data => {
           console.log('Search API response:', data);
           const resultsContainer = document.getElementById('results');
-          // Fetch and render dynamic islands
-          const { main, supporting } = await renderIslands('search_query', q, data.webResults, data.specialBlocks);
           // Render main content (special blocks + web results)
           const mainContent = [
-            main,
             ...data.specialBlocks.filter(block => block.type !== 'knowledge').map(block => renderSpecialBlock(block)),
             renderSearchResults(data.webResults)
           ].join('');
@@ -276,7 +273,14 @@ fetch('/api/clients')
                   </div>
                 </div>
               </div>
-            `).join('') : supporting;
+            `).join('') : '';
+          // --- Asynchronous Island Loading ---
+          renderIslands('search_query', q, data.webResults, data.specialBlocks).then(({ main, supporting }) => {
+            // Append main islands to main results
+            resultsContainer.innerHTML = main + resultsContainer.innerHTML;
+            // Append supporting islands to right sidebar (after knowledge blocks)
+            rightSidebar.innerHTML += supporting;
+          });
         });
     }
     // On form submit, redirect to new indsearch page instance with updated query
