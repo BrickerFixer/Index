@@ -9,10 +9,9 @@ from urllib.parse import urlparse
 from collections import defaultdict
 from clients.dummy import DummyClient
 from clients.ddg import DDGClient
-from clients.google import GoogleClient
-from clients.qwant import QwantClient
 from clients.wikipedia import WikipediaClient
 from clients.ruwikipedia import RuWikipediaClient
+from clients.qwant import QWantClient
 
 
 app = FastAPI()
@@ -54,10 +53,9 @@ class SearchClient:
 clients = {
     DummyClient.name: DummyClient(),
     DDGClient.name: DDGClient(),
-    GoogleClient.name: GoogleClient(),
-    QwantClient.name: QwantClient(),
     WikipediaClient.name: WikipediaClient(),
-    RuWikipediaClient.name: RuWikipediaClient()
+    RuWikipediaClient.name: RuWikipediaClient(),
+    QWantClient.name: QWantClient(),
     # ...add more as you split them out
 }
 

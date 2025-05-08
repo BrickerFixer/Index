@@ -1,10 +1,7 @@
 [
     "logo.js",
     "search.js",
-    "map.js",
-    "news.js",
     "suggestions.js",
-    "tv.js",
-    "weather.js",
-    "pringle.js"
+    "pringle.js",
+    "search-fullsize.js"
 ]
