@@ -1,11 +1,11 @@
 // search.js - Modular widget definition
 export default {
-    type: 'search-fullsize',
+    type: 'fullsize-se',
     label: 'Full-size search',
     getSize: () => [6, 1],
     create: function ({ isEditMode, onRemove, onDragStart, onDragEnd }) {
       const widget = document.createElement('div');
-      widget.className = 'widget search-widget';
+      widget.className = 'widget fullsize-se-widget';
       widget.innerHTML = `
         <div class="arrow">
             <form action="/indsearch.html" method="get" class="search suggest2-form suggest2-counter search_suggest_yes "><input name="q" type="hidden" name="lr" value="90"/>
@@ -20,7 +20,7 @@ export default {
         </div>
       `;
       widget.draggable = true;
-      widget.dataset.type = 'search';
+      widget.dataset.type = 'fullsize-se';
       widget.dataset.colSpan = 6;
       widget.dataset.rowSpan = 1;
       // Remove button

@@ -1,0 +1,19 @@
+{
+  "background": "Background",
+  "none": "None",
+  "image": "Image",
+  "video": "Video",
+  "apply": "Apply",
+  "custom_css": "Custom CSS",
+  "apply_css": "Apply CSS",
+  "reset_css": "Reset CSS",
+  "more": "More",
+  "settings": "Settings",
+  "weather": "Weather",
+  "my_town": "My Town",
+  "videos": "Videos",
+  "minimal_search": "Minimal Search",
+  "pics": "Pics",
+  "software": "Software",
+  "transport": "Transport"
+}

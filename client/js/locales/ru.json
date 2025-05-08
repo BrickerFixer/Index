@@ -1,0 +1,19 @@
+{
+  "background": "Фон",
+  "none": "Нет",
+  "image": "Изображение",
+  "video": "Видео",
+  "apply": "Применить",
+  "custom_css": "Пользовательский CSS",
+  "apply_css": "Применить CSS",
+  "reset_css": "Сбросить CSS",
+  "more": "Ещё",
+  "settings": "Настройки",
+  "weather": "Погода",
+  "my_town": "Мой город",
+  "videos": "Видео",
+  "minimal_search": "Мини-поиск",
+  "pics": "Фотки",
+  "software": "Софт",
+  "transport": "Транспорт"
+}

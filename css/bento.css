@@ -431,20 +431,16 @@ body .header {
     background-color: #F6F5F3
 }
 
+.header__action_type_fil .header__action-i {
+  background-image: url(/resources/images/filters.svg)
+}
+
 .header__action_type_srv .header__action-i {
     background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M3%2012h8v-6h-8v6zm9%200h8v-6h-8v6zm9-6v6h8v-6h-8zm-18%2013h8v-6h-8v6zm9%200h8v-6h-8v6zm9%200h8v-6h-8v6zm0%207h8v-6h-8v6zm-9%200h8v-6h-8v6zm-9%200h8v-6h-8v6z%22%2F%3E%3C%2Fsvg%3E)
 }
 
-.i-ua_inlinesvg_no .header__action_type_srv .header__action-i {
-    background-image: url("../../../20140603092620im_/http_/yastatic.net/www/_/CdTuGBvvgeucKPLIhnKLACQnv9Q.png")
-}
-
 .header__action_type_wrch .header__action-i {
     background-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%3E%3Cpath%20d%3D%22M25.038%2023.621l-9.783-10.126c.815-1.813.522-4.051-.891-5.554-1.514-1.611-3.823-1.855-5.584-.743l3.375%201.832-.016%202.941-2.21%201.673-3.379-1.834c.089%201.106.529%202.186%201.325%203.031%201.39%201.479%203.447%201.808%205.136.991l9.802%2010.146c.64.676%201.654.696%202.271.047.611-.65.592-1.728-.046-2.404z%22%2F%3E%3C%2Fsvg%3E)
-}
-
-.i-ua_inlinesvg_no .header__action_type_wrch .header__action-i {
-    background-image: url("../../../20140429072103im_/http_/yastatic.net/www/_/ohoi7LL5mDre-iREiXChSrYERa4.png")
 }
 
 .b-logo__image_bg {
@@ -507,18 +503,6 @@ body .b-head-tabs__link {
 .b-head-tabs .i-adaptive__3,
 .b-services-more .i-adaptive__1 {
     display: none
-}
-
-.m-stat .b-services-more .i-adaptive__1 {
-    background-image: url(//web.archive.org/web/20140702175240im_/http://clck.yandex.ru/click/dtype=stred/pid=132/cid=71945/path=tabsPopup.tab1/\*)
-}
-
-.m-stat .b-services-more .i-adaptive__2 {
-    background-image: url(//web.archive.org/web/20140702175240im_/http://clck.yandex.ru/click/dtype=stred/pid=132/cid=71945/path=tabsPopup.tab2/\*)
-}
-
-.m-stat .b-services-more .i-adaptive__3 {
-    background-image: url(//web.archive.org/web/20140702175240im_/http://clck.yandex.ru/click/dtype=stred/pid=132/cid=71945/path=tabsPopup.tab3/\*)
 }
 
 .b-dropdowna__menu .b-head-tabs__tab-link:link,

@@ -49,7 +49,7 @@
         <div class="layout__col layout__col_size_5">
           
           <a
-            class="header__action header__action_type_wrch "
+            class="header__action header__action_type_fil"
             onclick="return {'header__action':{'releaseByDocumentScroll':false}}"
           >
             <i class="header__action-i"></i>
@@ -68,60 +68,60 @@
       <div class="b-line">
         <div class="options-container">
           <div class="option-group">
-            <h3>Background</h3>
-            <button class="bg-btn" data-bg="none">None</button>
-            <button class="bg-btn" data-bg="image">Image</button>
-            <button class="bg-btn" data-bg="video">Video</button>
+            <h3 data-i18n="background">Background</h3>
+            <button class="button-subtle bg-btn" data-bg="none" data-i18n="none">None</button>
+            <button class="button-subtle bg-btn" data-bg="image" data-i18n="image">Image</button>
+            <button class="button-subtle bg-btn" data-bg="video" data-i18n="video">Video</button>
             <div class="bg-options" style="display: none;">
               <input type="url" id="bg-url" placeholder="Enter URL for image/video" />
-              <button class="button-secondary" id="apply-bg">Apply</button>
+              <button class="button-secondary" id="apply-bg" data-i18n="apply">Apply</button>
             </div>
           </div>
           <div class="options-container">
             <div class="option-group">
-              <h3>Custom CSS</h3>
+              <h3 data-i18n="custom_css">Custom CSS</h3>
               <input type="url" id="custom-css-url" placeholder="Paste external CSS URL here">
-              <button id="apply-custom-css">Apply CSS</button>
-              <button id="reset-custom-css">Reset CSS</button>
+              <button class="button-secondary button-primary" id="apply-custom-css" data-i18n="apply_css">Apply CSS</button>
+              <button class="button-secondary" id="reset-custom-css" data-i18n="reset_css">Reset CSS</button>
             </div>
           </div>
         </div>
       </div>
       <div class="b-line">
         <div class="option-group">
-          <h3>More</h3>
+          <h3 data-i18n="more">More</h3>
           <div class="services-carousel">
             <a href="#" class="service-item">
               <img src="resources/service-icons/mini-my.png" alt="Settings" class="service-icon" />
-              <span class="service-label">Settings</span>
+              <span class="service-label" data-i18n="settings">Settings</span>
             </a>
             <a href="#" class="service-item">
               <img src="resources/service-icons/mini-weather.png" alt="Weather" class="service-icon" />
-              <span class="service-label">Weather</span>
+              <span class="service-label" data-i18n="weather">Weather</span>
             </a>
             <a href="#" class="service-item">
               <img src="resources/service-icons/mini-mytown.png" alt="My Town" class="service-icon" />
-              <span class="service-label">My Town</span>
+              <span class="service-label" data-i18n="my_town">My Town</span>
             </a>
             <a href="#" class="service-item">
               <img src="resources/service-icons/mini-videos.png" alt="Videos" class="service-icon" />
-              <span class="service-label">Videos</span>
+              <span class="service-label" data-i18n="videos">Videos</span>
             </a>
             <a href="#" class="service-item">
               <img src="resources/service-icons/mini-mini.png" alt="Minimal Search" class="service-icon" />
-              <span class="service-label">Minimal Search</span>
+              <span class="service-label" data-i18n="minimal_search">Minimal Search</span>
             </a>
             <a href="#" class="service-item">
               <img src="resources/service-icons/mini-pics.png" alt="Pics" class="service-icon" />
-              <span class="service-label">Pics</span>
+              <span class="service-label" data-i18n="pics">Pics</span>
             </a>
             <a href="#" class="service-item">
               <img src="resources/service-icons/mini-soft.png" alt="Software" class="service-icon" />
-              <span class="service-label">Software</span>
+              <span class="service-label" data-i18n="software">Software</span>
             </a>
             <a href="#" class="service-item">
               <img src="resources/service-icons/mini-transport.png" alt="Transport" class="service-icon" />
-              <span class="service-label">Transport</span>
+              <span class="service-label" data-i18n="transport">Transport</span>
             </a>
           </div>
         </div>
@@ -156,6 +156,7 @@
     </div>
 </div>
     
+    <script src="client/js/i18n.js"></script>
     <script src="client/js/ui.js"></script>
     <script src="client/js/serp-render.js"></script>
 </body>

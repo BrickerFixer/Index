@@ -13,7 +13,7 @@ class FusionClient:
 
     async def search(self, query: str) -> List[Dict[str, Any]]:
         # List of client instances to combine
-        client_classes = [DDGClient, WikipediaClient, RuWikipediaClient, QWantClient]
+        client_classes = [QWantClient, DDGClient, WikipediaClient, RuWikipediaClient]
         clients = [c() for c in client_classes]
         # Run all searches concurrently
         async def run_client(client):
