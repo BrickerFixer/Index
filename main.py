@@ -7,11 +7,11 @@ import httpx
 import os
 from urllib.parse import urlparse
 from collections import defaultdict
-from clients.dummy import DummyClient
 from clients.ddg import DDGClient
 from clients.wikipedia import WikipediaClient
 from clients.ruwikipedia import RuWikipediaClient
 from clients.qwant import QWantClient
+from clients.fusion import FusionClient
 
 
 app = FastAPI()
@@ -51,11 +51,11 @@ class SearchClient:
         raise NotImplementedError
 
 clients = {
-    DummyClient.name: DummyClient(),
+    FusionClient.name: FusionClient(),
+    QWantClient.name: QWantClient(),
     DDGClient.name: DDGClient(),
     WikipediaClient.name: WikipediaClient(),
     RuWikipediaClient.name: RuWikipediaClient(),
-    QWantClient.name: QWantClient(),
     # ...add more as you split them out
 }
 
