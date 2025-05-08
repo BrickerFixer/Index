@@ -5,7 +5,7 @@ Index is a hackable, modular metasearch engine that aggregates results from mult
 ## Features
 
 - **Multiple Search Clients**: Supports DuckDuckGo, Qwant, Wikipedia, and more via a pluggable client system.
-- **Modern UI**: Responsive, modular interface with support for custom CSS, backgrounds, and interactive widgets ("islands").
+- **Traditional UI**: Responsive, traditional interface with support for custom CSS, backgrounds, and interactive widgets ("islands").
 - **Special Blocks**: Supports rich result blocks (weather, color picker, etc.) alongside standard web results.
 - **OpenSearch Support**: Integrates with browsers via `opensearch.xml`.
 - **Easy Theming**: Change backgrounds, inject custom CSS, and tweak layout from the UI.
