@@ -112,6 +112,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // Filter panel logic
+  const filterBtn = document.querySelector('.header__action_type_fil');
+  const filterPanel = document.querySelector('.filters');
+  let isFilterPanelOpen = false;
+
+  if (filterBtn && filterPanel) {
+    filterBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      isFilterPanelOpen = !isFilterPanelOpen;
+      if (isFilterPanelOpen) {
+        filterPanel.classList.add('visible');
+        filterBtn.classList.add('header__action_pressed_yes');
+      } else {
+        filterPanel.classList.remove('visible');
+        filterBtn.classList.remove('header__action_pressed_yes');
+      }
+    });
+
+    // Optional: close filter panel when clicking outside
+    document.addEventListener('click', function(e) {
+      if (isFilterPanelOpen && !filterPanel.contains(e.target) && !filterBtn.contains(e.target)) {
+        isFilterPanelOpen = false;
+        filterPanel.classList.remove('active');
+        filterBtn.classList.remove('header__action_pressed_yes');
+      }
+    });
+  }
+
   // Custom CSS logic
   const cssInput = document.getElementById('custom-css-url');
   const cssBtn = document.getElementById('apply-custom-css');

@@ -7,76 +7,46 @@ const SUGGESTIONS = [
     description: 'Contribute to our search!'
   },
   {
-    img: '/resources/images/ohno.png',
-    title: 'THEY\'RE STEALING MY DIPLOMA NOO',
-    link: '#',
-    description: 'We gotta return it, i guess'
-  },
-  {
-    img: '/resources/images/yougotmail.png',
-    title: 'You got spam',
-    link: '#',
-    description: 'Open anyway? Y/N'
-  },
-  {
-    img: '/resources/images/whatdidtheydotolinux.png',
-    title: 'What did they do to Linux?',
-    link: '#',
-    description: 'Oh wait they put index there'
-  },
-  {
-    img: '/resources/images/deezducks.png',
-    title: 'Deez Ducks',
-    link: '#',
-    description: 'Quack productivity, not just memes.'
-  },
-  {
-    img: '/resources/images/ohno3.png',
-    title: 'Now they\'re stealing grammar :(',
-    link: '#',
-    description: 'Halp'
-  },
-  {
-    img: '/resources/service-icons/mini-transport.png',
-    title: 'Know when your bus arrives',
-    link: '#',
-    description: 'So you don\'t skip it. Use Index Transport!'
-  },
-  {
-    img: '/resources/service-icons/mini-weather.png',
-    title: 'Weather for your city',
-    link: '#',
-    description: 'Always up-to-date, always free.'
-  },
-  {
-    img: '/resources/service-icons/mini-islands.png',
-    title: 'Index 0.3',
+    img: '/resources/images/image.png',
+    title: 'Index 0.3 - Acacia',
     link: '#',
     description: 'Find out what changed'
   },
   {
     img: '/resources/images/twelve.png',
-    title: 'Thirty',
+    title: 'Minutes since index didn\'t crash',
     link: '#',
-    description: 'Fifty one'
-  },
-  {
-    img: '/resources/images/malware.png',
-    title: 'Don\'t use Yandex Browser',
-    link: '#',
-    description: 'It sends your microphone data to authorities'
-  },
-  {
-    img: '/resources/images/malwareone.png',
-    title: 'We don\'t recommend Opera',
-    link: '#',
-    description: 'It is a professional malware made to track you'
+    description: 'That\'s an achievement...'
   },
   {
     img: '/resources/images/customizable.png',
-    title: 'Index will soon be customizable',
+    title: 'Customizable',
     link: '#',
-    description: 'Just wait a lil for good themes and persistence'
+    description: 'Index is more customizable than the most search engines.'
+  },
+  {
+    img: "/resources/images/onegin.png",
+    title: "Eugene Onegin",
+    link: "/indsearch.html?q=Eugene%20Onegin&client=fusion",
+    description: "Learn why it's considered to be a visualisation of a fallen era"
+  },
+  {
+    img: "/resources/images/readabook.png",
+    title: "Poems about Summer",
+    link: "/indsearch.html?q=Poems%20about%20Summer&client=fusion",
+    description: "Immerse yourself into a divine world of art"
+  },
+  {
+    img: "/resources/images/rightnow.png",
+    title: "Look out of the window",
+    link: "#",
+    description: "Touch grass"
+  },
+  {
+    img: "/resources/images/shells.png",
+    title: "Divine creatures of sea",
+    link: "/indsearch.html?q=Seashells",
+    description: "Find out how they make natural life better"
   }
 ];
 

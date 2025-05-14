@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/bento.css">
   <link rel="stylesheet" href="css/newserp.css">
   <link rel="stylesheet" href="css/islands/islands_general.css">
+  <link rel="icon" href="/resources/favicon/favicon.ico">
   <meta name="application-name" content="Index Search Engine">
   <meta name="description" content="A hackable, modular metasearch engine.">
 </head>
@@ -130,14 +131,27 @@
   </div>
   <div class="b-page-layout">
     <div class="main main_type_2-auto layout layout_type_serp serp i-bem">
+
+
         <div class="main__left main__left_size_2 layout__col layout__col_size_2">
             <div class="navigation serp i-bem">
               <!-- Navigation bar with clients will be injected here -->
             </div>
         </div>
+        
         <div class="main__right layout__col">
             <div class="main__right-inner">
+
                 <div class="main__content">
+                  <div id="filters" class="filters">
+                    <div class="filter-section">
+                      <div class="filter" data-type="logo">Type</div>
+                      <div class="filter" data-type="search">Domain</div>
+                      <div class="filter" data-type="suggestions">Document age</div>
+                      <div class="filter" data-type="pringle">Fuzzy search</div>
+                      <div class="filter" data-type="fullsize-se">Safe search</div>
+                    </div>
+                  </div>
                     <div class="content layout layout_type_serp favicons i-bem">
                         <div class="content__left content__left_size_9 layout__col layout__col_size_9">
                             <div class="serp-list" id="results">
