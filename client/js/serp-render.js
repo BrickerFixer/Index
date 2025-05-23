@@ -4,6 +4,18 @@ function getQueryParam(name) {
   return params.get(name);
 }
 
+// Helper to get all query params except a list of keys
+function getExtraQueryParams(excludeKeys = []) {
+  const params = new URLSearchParams(window.location.search);
+  const extras = [];
+  for (const [key, value] of params.entries()) {
+    if (!excludeKeys.includes(key)) {
+      extras.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+    }
+  }
+  return extras.length ? '&' + extras.join('&') : '';
+}
+
 // --- Dynamic Search Client Navigation ---
 function renderClientNav(clients, selectedClient, q) {
   const nav = document.querySelector('.navigation');
@@ -59,8 +71,12 @@ function renderSpecialBlock(block) {
 }
 
 function renderSearchResults(results) {
-  console.log('Rendering results:', results); // Debug logging
-  
+  // Groot mode: if groot=groot in URL, replace all results with groot
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('groot') === 'groot') {
+    // Replace all domains and items with a single groot result
+    return `<div class="serp-block"><div class="serp-item serp-item_plain_yes i-bem serp-item_first_yes"><div class="serp-item__wrap island i-clearfix"><h2 class="serp-item__title"><span class="serp-item__title-link b-link">groot</span></h2><div class="serp-item__greenurl serp-url"><span class="serp-url__link">groot</span></div><div class="serp-item__text">groot</div></div></div></div>`;
+  }
   return Object.entries(results).map(([domain, items]) => `
     <div class="serp-block">
       ${items.map((item, index) => `
@@ -234,6 +250,7 @@ window.getLoadedIslands = () => IslandRegistry.getAll();
 const q = getQueryParam('q') || '';
 const page = parseInt(getQueryParam('page') || '1', 10);
 const count = parseInt(getQueryParam('count') || '10', 10);
+const extraParams = getExtraQueryParams(['q', 'client', 'page', 'count']);
 fetch('/api/clients')
   .then(res => res.json())
   .then(data => {
@@ -242,7 +259,7 @@ fetch('/api/clients')
     renderClientNav(clients, client, q);
     if(q) {
       document.getElementById('searchInput').value = q;
-      fetch(`/api/search?q=${encodeURIComponent(q)}&client=${encodeURIComponent(client)}&page=${page}&count=${count}`)
+      fetch(`/api/search?q=${encodeURIComponent(q)}&client=${encodeURIComponent(client)}&page=${page}&count=${count}${extraParams}`)
         .then(res => res.json())
         .then(async data => {
           console.log('Search API response:', data);

@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -76,6 +76,7 @@ async def get_clients():
 
 @app.get("/api/search")
 async def search(
+    request: Request,
     q: str = Query(..., description="Search query"),
     client: str = Query("dummy", description="Search client ID"),
     page: int = Query(1, description="Page number", ge=1),
@@ -84,13 +85,21 @@ async def search(
     if client not in clients:
         return {"error": "Unknown client"}
     c = clients[client]
+    # Collect all query params for client-specific routing
+    extra_params = {}
+    for k, v in request.query_params.items():
+        if k not in ["q", "client", "page", "count"]:
+            # Always get the raw value (not parsed as int)
+            extra_params[k] = v
+    print(f"[main.py] Forwarding extra_params to client: {extra_params}")
+    print(f"[main.py] All query_params: {dict(request.query_params)}")
     # Only use pagination if supported
     if getattr(c, "supports_pagination", False):
-        result_obj = await c.search(q, page=page, count=count)
+        result_obj = await c.search(q, page=page, count=count, **extra_params)
         results = result_obj.results
         pagination = getattr(result_obj, 'pagination', None)
     else:
-        results = await c.search(q)
+        results = await c.search(q, **extra_params)
         pagination = None
     # Group results by domain
     web_results = defaultdict(list)

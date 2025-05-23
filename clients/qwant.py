@@ -21,20 +21,49 @@ class QWantClient:
             'count': count
         }
 
-    async def search(self, query: str, page: int = 1, count: int = 10) -> Any:
+    async def search(self, query: str, page: int = 1, count: int = 10, safesearch: int = None, groot: str = None, **kwargs) -> Any:
         offset = (page - 1) * count
+        # Accept safesearch from kwargs if present (handle string or int)
+        # LOG: print all incoming kwargs for debug
+        print(f"[QWantClient] RAW kwargs: {kwargs}")
+        for key in ['safesearch', 'safesearch[]']:
+            if safesearch is None and key in kwargs:
+                try:
+                    safesearch = int(kwargs.pop(key))
+                    break
+                except Exception:
+                    safesearch = 1
+        if safesearch is None:
+            safesearch = 1
+        else:
+            safesearch = int(safesearch)
+        # Groot mode: if groot=groot, return only groot results
+        if groot == "groot" or kwargs.get("groot") == "groot":
+            print("[QWantClient] Groot mode activated!")
+            results = [{
+                'title': 'groot',
+                'url': '#',
+                'snippet': 'groot'
+            } for _ in range(count)]
+            pagination = self.get_pagination(offset, count)
+            return SimpleNamespace(results=results, pagination=pagination)
+        print(f"[QWantClient] search called with: query={query!r}, page={page}, count={count}, safesearch={safesearch}, groot={groot}, kwargs={kwargs}")
         url = "https://api.qwant.com/v3/search/web"
         params = {
             "q": query,
             "count": count,
             "offset": offset,
             "locale": "en_US",
-            "safesearch": 1,
+            "safesearch": safesearch,
             "device": "desktop",
             "uiv": 4,
             "tgp": 3,
             "llm": "false"
         }
+        # Allow override of locale via kwargs
+        if 'locale' in kwargs:
+            params['locale'] = kwargs['locale']
+        print(f"[QWantClient] Final params for request: {params}")
         headers = {
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
             "Referer": "https://www.qwant.com/",
