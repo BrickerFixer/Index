@@ -22,7 +22,7 @@ export async function renderIsland(container, params) {
     const apiKey = keyData.key || ""; // Set blank if not present
     if (!apiKey) {
       container.innerHTML = `
-        <div class="serp-block">
+        <div class="serp-block serp-adv__block serp-adv__block_premium_yes">
           <div class="serp-block__head"><div class="serp-block__head-wrap">Weather</div></div>
           <div class="serp-item"><div class="serp-item__wrap island island-interactive i-clearfix weather-island-container">
             <h1>Weather API key is missing.</h1>

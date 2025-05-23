@@ -1,5 +1,13 @@
 [
     "color-picker.js",
     "weather.js",
-    "expose.js"
+    "expose.js",
+    "easter-egg-matrix.js",
+    "random-number.js",
+    "promo.js",
+    "base64-tool.js",
+    "lorem-ipsum.js",
+    "uuid-generator.js",
+    "unit-converter.js",
+    "timestamp-converter.js"
 ]
