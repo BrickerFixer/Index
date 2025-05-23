@@ -5,6 +5,7 @@ class WikipediaClient:
     name = "wikipedia"
     display_name = "Wikipedia"
     icon = "https://en.wikipedia.org/static/favicon/wikipedia.ico"
+    supports_pagination = False
 
     async def search(self, query: str) -> List[Dict[str, Any]]:
         url = "https://en.wikipedia.org/w/api.php"

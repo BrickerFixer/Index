@@ -232,6 +232,8 @@ function extractContextWildcard(query, island) {
 window.getLoadedIslands = () => IslandRegistry.getAll();
 
 const q = getQueryParam('q') || '';
+const page = parseInt(getQueryParam('page') || '1', 10);
+const count = parseInt(getQueryParam('count') || '10', 10);
 fetch('/api/clients')
   .then(res => res.json())
   .then(data => {
@@ -240,7 +242,7 @@ fetch('/api/clients')
     renderClientNav(clients, client, q);
     if(q) {
       document.getElementById('searchInput').value = q;
-      fetch('/api/search?q=' + encodeURIComponent(q) + '&client=' + encodeURIComponent(client))
+      fetch(`/api/search?q=${encodeURIComponent(q)}&client=${encodeURIComponent(client)}&page=${page}&count=${count}`)
         .then(res => res.json())
         .then(async data => {
           console.log('Search API response:', data);
@@ -251,6 +253,28 @@ fetch('/api/clients')
             renderSearchResults(data.webResults)
           ].join('');
           resultsContainer.innerHTML = mainContent;
+
+          // Pagination links
+          const paginationDiv = document.createElement('div');
+          paginationDiv.style.margin = '16px 0';
+          paginationDiv.style.textAlign = 'center';
+          const currentPage = page && !isNaN(page) ? page : 1;
+          // Only show pagination if supported by backend
+          if (data.supports_pagination) {
+            if (currentPage > 1) {
+              const prev = document.createElement('a');
+              prev.href = `/indsearch.html?q=${encodeURIComponent(q)}&client=${encodeURIComponent(client)}&page=${currentPage-1}&count=${count}`;
+              prev.textContent = 'Previous';
+              paginationDiv.appendChild(prev);
+            }
+            if (currentPage > 1) paginationDiv.appendChild(document.createTextNode(' | '));
+            const next = document.createElement('a');
+            next.href = `/indsearch.html?q=${encodeURIComponent(q)}&client=${encodeURIComponent(client)}&page=${currentPage+1}&count=${count}`;
+            next.textContent = 'Next';
+            paginationDiv.appendChild(next);
+            resultsContainer.appendChild(paginationDiv);
+          }
+
           // Only show knowledge blocks if they exist, and render them in the right sidebar
           const rightSidebar = document.querySelector('.content__right .serp-list');
           const knowledgeBlocks = data.specialBlocks.filter(block => block.type === 'knowledge');

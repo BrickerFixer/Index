@@ -5,6 +5,7 @@ class DDGClient:
     name = "ddg"
     display_name = "DuckDuckGo"
     icon = "https://duckduckgo.com/favicon.ico"
+    supports_pagination = False
 
     async def search(self, query: str) -> List[Dict[str, Any]]:
         async with httpx.AsyncClient() as client:

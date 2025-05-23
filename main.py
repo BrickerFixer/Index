@@ -46,8 +46,9 @@ async def serve_indsearch():
 class SearchClient:
     name: str
     display_name: str
+    supports_pagination: bool = False
 
-    async def search(self, query: str) -> List[Dict[str, Any]]:
+    async def search(self, query: str, offset: int = 0, count: int = 10) -> List[Dict[str, Any]]:
         raise NotImplementedError
 
 clients = {
@@ -67,7 +68,8 @@ async def get_clients():
         {
             "id": c.name,
             "name": c.display_name,
-            "icon": getattr(c, "icon", "resources/service-icons/mini.png")
+            "icon": getattr(c, "icon", "resources/service-icons/mini.png"),
+            "supports_pagination": getattr(c, "supports_pagination", False)
         }
         for c in clients.values()
     ]
@@ -76,10 +78,20 @@ async def get_clients():
 async def search(
     q: str = Query(..., description="Search query"),
     client: str = Query("dummy", description="Search client ID"),
+    page: int = Query(1, description="Page number", ge=1),
+    count: int = Query(10, description="Results per page", ge=1, le=50),
 ):
     if client not in clients:
         return {"error": "Unknown client"}
-    results = await clients[client].search(q)
+    c = clients[client]
+    # Only use pagination if supported
+    if getattr(c, "supports_pagination", False):
+        result_obj = await c.search(q, page=page, count=count)
+        results = result_obj.results
+        pagination = getattr(result_obj, 'pagination', None)
+    else:
+        results = await c.search(q)
+        pagination = None
     # Group results by domain
     web_results = defaultdict(list)
     for r in results:
@@ -87,7 +99,11 @@ async def search(
         web_results[domain].append(r)
     return {
         "specialBlocks": [],
-        "webResults": web_results
+        "webResults": web_results,
+        "page": page,
+        "count": count,
+        "supports_pagination": getattr(c, "supports_pagination", False),
+        "pagination": pagination
     }
 
 # --- Run with: uvicorn main:app --reload ---

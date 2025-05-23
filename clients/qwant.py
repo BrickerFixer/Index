@@ -1,18 +1,33 @@
 from typing import List, Dict, Any
 import httpx
 from datetime import datetime, timedelta
+from types import SimpleNamespace
 
 class QWantClient:
     name = "qwant"
     display_name = "QWant"
     icon = "https://www.qwant.com/favicon.ico"
+    supports_pagination = True
 
-    async def search(self, query: str) -> List[Dict[str, Any]]:
+    def get_pagination(self, offset: int, count: int, total: int = None) -> dict:
+        # Qwant does not return total, so we can only infer if there MIGHT be a next page
+        prev = offset > 0
+        # If we got a full page, there might be a next page
+        next_ = True  # Always show next if count results returned (handled in frontend)
+        return {
+            'prev': prev,
+            'next': next_,
+            'offset': offset,
+            'count': count
+        }
+
+    async def search(self, query: str, page: int = 1, count: int = 10) -> Any:
+        offset = (page - 1) * count
         url = "https://api.qwant.com/v3/search/web"
         params = {
             "q": query,
-            "count": 10,
-            "offset": 0,
+            "count": count,
+            "offset": offset,
             "locale": "en_US",
             "safesearch": 1,
             "device": "desktop",
@@ -34,18 +49,18 @@ class QWantClient:
                 data = resp.json()
         except Exception as e:
             results.append({'title': "Internal API error", 'url': "#", 'snippet': str(e)})
-            return results
+            return SimpleNamespace(results=results, pagination=self.get_pagination(offset, count))
         # Parse Qwant API response (adapted from searx)
 
         search_results = data
         data = search_results.get('data', {})
         if search_results.get('status') != 'success':
             results.append({'title': "Nothing found", 'url': "#", 'snippet': "Nothing was found, probably the QWant API banned us?"})
-            return results
+            return SimpleNamespace(results=results, pagination=self.get_pagination(offset, count))
         mainline = data.get('result', {}).get('items', {}).get('mainline', [])
         if not mainline:
             results.append({'title': "Nothing found", 'url': "#", 'snippet': "Nothing was found, probably the QWant API banned us?"})
-            return results
+            return SimpleNamespace(results=results, pagination=self.get_pagination(offset, count))
         for row in mainline:
             mainline_type = row.get('type', 'web')
             if mainline_type != 'web':
@@ -62,4 +77,6 @@ class QWantClient:
                     'url': res_url,
                     'snippet': content,
                 })
-        return results
+        # At the end, attach pagination info as an attribute
+        pagination = self.get_pagination(offset, count)
+        return SimpleNamespace(results=results, pagination=pagination)

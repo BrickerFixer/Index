@@ -11,14 +11,22 @@ class FusionClient:
     display_name = "Fusion"
     icon = "resources/service-icons/mini.png"
 
-    async def search(self, query: str) -> List[Dict[str, Any]]:
+    async def search(self, query: str, page: int = 1, count: int = 10):
         # List of client instances to combine
         client_classes = [QWantClient, DDGClient, WikipediaClient, RuWikipediaClient]
         clients = [c() for c in client_classes]
         # Run all searches concurrently
         async def run_client(client):
             try:
-                return await client.search(query)
+                # If client supports pagination, pass page/count, else just query
+                if getattr(client, 'supports_pagination', False):
+                    res = await client.search(query, page=page, count=count)
+                    # If result is a SimpleNamespace, extract .results
+                    if hasattr(res, 'results'):
+                        return res.results
+                    return res
+                else:
+                    return await client.search(query)
             except Exception as e:
                 return [{
                     "title": f"{getattr(client, 'display_name', getattr(client, 'name', 'Client'))} error",
