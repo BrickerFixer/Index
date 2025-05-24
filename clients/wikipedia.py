@@ -7,6 +7,9 @@ class WikipediaClient:
     icon = "https://en.wikipedia.org/static/favicon/wikipedia.ico"
     supports_pagination = False
 
+    # Supported filter parameters for frontend
+    supported_parameters = []
+
     async def search(self, query: str) -> List[Dict[str, Any]]:
         url = "https://en.wikipedia.org/w/api.php"
         params = {

@@ -9,6 +9,13 @@ class QWantClient:
     icon = "https://www.qwant.com/favicon.ico"
     supports_pagination = True
 
+    # Supported filter parameters for frontend
+    supported_parameters = [
+        {"key": "safesearch", "label": "Safe search", "type": "select", "options": [{"v": "1", "t": "Strict"}, {"v": "0", "t": "Off"}]},
+        {"key": "locale", "label": "Locale", "type": "text"},
+        {"key": "groot", "label": "Groot mode", "type": "select", "options": [{"v": "", "t": "Off"}, {"v": "groot", "t": "On"}]}
+    ]
+
     def get_pagination(self, offset: int, count: int, total: int = None) -> dict:
         # Qwant does not return total, so we can only infer if there MIGHT be a next page
         prev = offset > 0

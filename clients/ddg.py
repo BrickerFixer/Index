@@ -7,6 +7,9 @@ class DDGClient:
     icon = "https://duckduckgo.com/favicon.ico"
     supports_pagination = False
 
+    # Supported filter parameters for frontend
+    supported_parameters = []
+
     async def search(self, query: str) -> List[Dict[str, Any]]:
         async with httpx.AsyncClient() as client:
             resp = await client.get(

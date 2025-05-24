@@ -257,6 +257,8 @@ fetch('/api/clients')
     const clients = Array.isArray(data) ? data : (data && Array.isArray(data.clients) ? data.clients : []);
     const client = getSelectedClient(clients);
     renderClientNav(clients, client, q);
+    // Render filters for the selected client
+    renderFiltersFromURLAndClient(clients, client);
     if(q) {
       document.getElementById('searchInput').value = q;
       fetch(`/api/search?q=${encodeURIComponent(q)}&client=${encodeURIComponent(client)}&page=${page}&count=${count}${extraParams}`)
@@ -328,7 +330,12 @@ fetch('/api/clients')
     document.querySelector('.arrow-search form').addEventListener('submit', function(e) {
       e.preventDefault();
       var newQuery = document.getElementById('searchInput').value;
-      window.location.href = '/indsearch.html?q=' + encodeURIComponent(newQuery) + '&client=' + encodeURIComponent(client);
+      // Retain all filter values except page
+      const params = new URLSearchParams(window.location.search);
+      params.set('q', newQuery);
+      params.set('client', client);
+      params.set('page', '1');
+      window.location.search = params.toString();
     });
   });
 
@@ -346,3 +353,66 @@ document.addEventListener('click', e => {
     }
   }
 });
+
+// --- Inject URL parameters as filters ---
+function renderFiltersFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const filterDiv = document.getElementById('filters');
+  if (!filterDiv) return;
+  // Show all params as filters, including q, client, page, count
+  const filters = [];
+  for (const [key, value] of params.entries()) {
+    filters.push(`<span class="filter-tag"><b>${key}</b>: ${value}</span>`);
+  }
+  filterDiv.innerHTML = filters.length ? filters.join(' ') : '';
+}
+
+// --- Inject client-supported filters as editable fields ---
+function renderFiltersFromURLAndClient(clients, selectedClient) {
+  const filterDiv = document.getElementById('filters');
+  if (!filterDiv) return;
+  // Find the selected client object
+  const clientObj = clients.find(c => c.id === selectedClient);
+  const filtersForClient = (clientObj && clientObj.supported_parameters) ? clientObj.supported_parameters : [];
+  const params = new URLSearchParams(window.location.search);
+  const filters = [];
+  for (const filter of filtersForClient) {
+    let value = params.get(filter.key) || '';
+    if (filter.type === 'select') {
+      filters.push(`<label class="filter-label">${filter.label}: <select name="${filter.key}" class="filter-input" data-filter-key="${filter.key}">${filter.options.map(opt => `<option value="${opt.v}"${value === opt.v ? ' selected' : ''}>${opt.t}</option>`).join('')}</select></label>`);
+    } else {
+      filters.push(`<label class="filter-label">${filter.label}: <input type="text" name="${filter.key}" class="filter-input" data-filter-key="${filter.key}" value="${value}"></label>`);
+    }
+  }
+  // Add a search button
+  if (filters.length) {
+    filters.push('<button id="filters-search-btn" class="button-secondary">Search</button>');
+  }
+  filterDiv.innerHTML = filters.length ? filters.join(' ') : '';
+  // Add event listener for the search button
+  const searchBtn = document.getElementById('filters-search-btn');
+  if (searchBtn) {
+    searchBtn.onclick = function() {
+      // Build new URL with all filter values, retaining q/client/count but resetting page
+      const newParams = new URLSearchParams(window.location.search);
+      // Remove all filter keys for this client
+      for (const filter of filtersForClient) newParams.delete(filter.key);
+      // Set new filter values (skip empty)
+      filterDiv.querySelectorAll('.filter-input').forEach(input => {
+        const val = input.value;
+        const key = input.getAttribute('data-filter-key');
+        if (val && val !== '') {
+          newParams.set(key, val);
+        } else {
+          newParams.delete(key);
+        }
+      });
+      newParams.set('client', selectedClient);
+      newParams.set('page', '1'); // Always reset page
+      window.location.search = newParams.toString();
+    };
+  }
+}
+
+renderFiltersFromURL();
+renderFiltersFromURLAndClient(clients, client);

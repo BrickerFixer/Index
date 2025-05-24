@@ -7,6 +7,9 @@ class RuWikipediaClient:
     icon = "https://ru.wikipedia.org/static/favicon/wikipedia.ico"
     supports_pagination = False
 
+    # Supported filter parameters for frontend
+    supported_parameters = []
+
     async def search(self, query: str) -> List[Dict[str, Any]]:
         url = "https://ru.wikipedia.org/w/api.php"
         params = {

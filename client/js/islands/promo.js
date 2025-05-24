@@ -1,7 +1,5 @@
 export const id = "promo";
 export const name = "Promo";
-export const trigger = "search_query";
-export const keywords = ["promo", "promotion", "реклама", "ad", "advertisement"];
 export const manually_curated = true;
 export const require_context_wildcard = false;
 export const context_wildcard = null;
@@ -12,11 +10,9 @@ const promoExamples = [
   { query: "weather in Tokyo", desc: "Weather forecast" },
   { query: "color picker", desc: "Color Picker tool" },
   { query: "random number 1-1000", desc: "Random Number generator" },
-  { query: "translate hello to French", desc: "Translation" },
   { query: "base64 encode hello", desc: "Base64 Encoder" },
   { query: "10 km to miles", desc: "Unit Converter" },
   { query: "timestamp 1680000000", desc: "Timestamp Converter" },
-  { query: "json format {\"a\":1}", desc: "JSON Formatter" },
   { query: "uuid", desc: "UUID Generator" },
   { query: "lorem ipsum", desc: "Lorem Ipsum Generator" }
 ];

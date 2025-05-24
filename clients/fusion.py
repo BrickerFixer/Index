@@ -10,6 +10,8 @@ class FusionClient:
     name = "fusion"
     display_name = "Fusion"
     icon = "resources/service-icons/mini.png"
+    # Supported filter parameters for frontend
+    supported_parameters = []
 
     async def search(self, query: str, page: int = 1, count: int = 10):
         # List of client instances to combine

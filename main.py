@@ -69,7 +69,8 @@ async def get_clients():
             "id": c.name,
             "name": c.display_name,
             "icon": getattr(c, "icon", "resources/service-icons/mini.png"),
-            "supports_pagination": getattr(c, "supports_pagination", False)
+            "supports_pagination": getattr(c, "supports_pagination", False),
+            "supported_parameters": getattr(c, 'supported_parameters', [])
         }
         for c in clients.values()
     ]
